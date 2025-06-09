@@ -1,0 +1,59 @@
+[gd_resource type="VoxelBlockyTypeLibrary" load_steps=10 format=3 uid="uid://bj6utmjyjnqfe"]
+
+[ext_resource type="Material" uid="uid://cu7gkd8bsqn0b" path="res://blocks/blocks_material.tres" id="1_p7x1q"]
+
+[sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_6otl2"]
+
+[sub_resource type="VoxelBlockyType" id="VoxelBlockyType_2anxj"]
+unique_name = &"air"
+base_model = SubResource("VoxelBlockyModelEmpty_6otl2")
+resource_name = "air"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_kd4uq"]
+atlas_size_in_tiles = Vector2i(10, 10)
+tile_left = Vector2i(2, 2)
+tile_right = Vector2i(2, 2)
+tile_bottom = Vector2i(2, 2)
+tile_top = Vector2i(2, 2)
+tile_back = Vector2i(2, 2)
+tile_front = Vector2i(2, 2)
+material_override_0 = ExtResource("1_p7x1q")
+
+[sub_resource type="VoxelBlockyType" id="VoxelBlockyType_1rkwc"]
+unique_name = &"dirt"
+base_model = SubResource("VoxelBlockyModelCube_kd4uq")
+resource_name = "dirt"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_p7x1q"]
+atlas_size_in_tiles = Vector2i(10, 10)
+tile_left = Vector2i(1, 2)
+tile_right = Vector2i(1, 2)
+tile_bottom = Vector2i(2, 2)
+tile_top = Vector2i(0, 2)
+tile_back = Vector2i(1, 2)
+tile_front = Vector2i(1, 2)
+material_override_0 = ExtResource("1_p7x1q")
+
+[sub_resource type="VoxelBlockyType" id="VoxelBlockyType_6otl2"]
+unique_name = &"grass"
+base_model = SubResource("VoxelBlockyModelCube_p7x1q")
+resource_name = "grass"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_5hu56"]
+atlas_size_in_tiles = Vector2i(10, 10)
+tile_left = Vector2i(2, 1)
+tile_right = Vector2i(2, 1)
+tile_bottom = Vector2i(1, 1)
+tile_top = Vector2i(1, 1)
+tile_back = Vector2i(2, 1)
+tile_front = Vector2i(2, 1)
+material_override_0 = ExtResource("1_p7x1q")
+
+[sub_resource type="VoxelBlockyType" id="VoxelBlockyType_33a67"]
+unique_name = &"log"
+base_model = SubResource("VoxelBlockyModelCube_5hu56")
+resource_name = "log"
+
+[resource]
+types = Array[VoxelBlockyType]([SubResource("VoxelBlockyType_2anxj"), SubResource("VoxelBlockyType_1rkwc"), SubResource("VoxelBlockyType_6otl2"), SubResource("VoxelBlockyType_33a67")])
+_id_map_data = PackedStringArray("air", "dirt", "grass", "log")
