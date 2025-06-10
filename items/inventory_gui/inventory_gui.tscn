@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3bmhrel5r5xl"]
+
+[ext_resource type="Script" uid="uid://chnhbetho04l7" path="res://items/inventory_gui/inventory_gui.gd" id="1_kwaqa"]
+[ext_resource type="PackedScene" uid="uid://ku16lkcnv2bk" path="res://items/inventory_gui/inventory_slot_gui.tscn" id="2_jtnge"]
+
+[node name="InventoryGUI" type="Control" node_paths=PackedStringArray("hotbar")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kwaqa")
+hotbar = NodePath("Hotbar")
+
+[node name="Hotbar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -290.0
+offset_top = -76.0
+offset_right = 290.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="InventorySlotGUI" parent="Hotbar" instance=ExtResource("2_jtnge")]
+layout_mode = 2
+
+[node name="InventorySlotGUI2" parent="Hotbar" instance=ExtResource("2_jtnge")]
+layout_mode = 2
+
+[node name="InventorySlotGUI3" parent="Hotbar" instance=ExtResource("2_jtnge")]
+layout_mode = 2
+
+[node name="InventorySlotGUI4" parent="Hotbar" instance=ExtResource("2_jtnge")]
+layout_mode = 2
+
+[node name="InventorySlotGUI5" parent="Hotbar" instance=ExtResource("2_jtnge")]
+layout_mode = 2
+
+[node name="InventorySlotGUI6" parent="Hotbar" instance=ExtResource("2_jtnge")]
+layout_mode = 2
+
+[node name="InventorySlotGUI7" parent="Hotbar" instance=ExtResource("2_jtnge")]
+layout_mode = 2
+
+[node name="InventorySlotGUI8" parent="Hotbar" instance=ExtResource("2_jtnge")]
+layout_mode = 2
+
+[node name="InventorySlotGUI9" parent="Hotbar" instance=ExtResource("2_jtnge")]
+layout_mode = 2
+
+[node name="InventorySlotGUI10" parent="Hotbar" instance=ExtResource("2_jtnge")]
+layout_mode = 2

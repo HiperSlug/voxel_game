@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dq7bwsqfbymet"]
+
+[ext_resource type="StyleBox" uid="uid://dnrdg4xu6p125" path="res://theme/inventory_slot/inventory_slot.tres" id="1_8ab6e"]
+[ext_resource type="StyleBox" uid="uid://dirgfcypve8f2" path="res://theme/inventory_slot/inventory_slot_selected.tres" id="2_nrt0f"]
+
+[resource]
+InventorySlot/base_type = &"PanelContainer"
+InventorySlot/styles/panel = ExtResource("1_8ab6e")
+SelInventorySlot/base_type = &"PanelContainer"
+SelInventorySlot/styles/panel = ExtResource("2_nrt0f")
