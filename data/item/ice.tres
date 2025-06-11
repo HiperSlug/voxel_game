@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="BlockItem" load_steps=5 format=3 uid="uid://bbj0eduhe8wgj"]
+
+[ext_resource type="Texture2D" uid="uid://va4atfhced42" path="res://assets/item_sprites.png" id="1_0cr67"]
+[ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/classes/item/block_item.gd" id="1_4bsg4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6plao"]
+atlas = ExtResource("1_0cr67")
+region = Rect2(48, 384, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8njx"]
+atlas = ExtResource("1_0cr67")
+region = Rect2(0, 384, 48, 48)
+
+[resource]
+script = ExtResource("1_4bsg4")
+block_name = &"ice"
+name = "Ice"
+single_texture = SubResource("AtlasTexture_a8njx")
+multi_texture = SubResource("AtlasTexture_6plao")
+stack_size = 999
+metadata/_custom_type_script = "uid://crsy4y4oa5e1m"

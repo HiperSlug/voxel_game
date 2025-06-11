@@ -35,7 +35,8 @@ func try_place_pointed() -> void:
 		
 		# get voxel position.
 		var collision_point: Vector3 = crosshair_raycast.get_collision_point()
-		collision_point += crosshair_raycast.get_collision_normal() * .5
+		var collision_normal: Vector3 = crosshair_raycast.get_collision_normal()
+		collision_point += collision_normal * .5
 		
 		var voxel_position: Vector3i = Vector3i(floor(collision_point))
 		
@@ -48,21 +49,54 @@ func try_place_pointed() -> void:
 		var item: Item = inventory.inventory_slots[slot_index].item
 		if not item is BlockItem:
 			return
-		item = item as BlockItem
+		
+		var block_index: BlockIndex = item.get_block_index()
 		
 		# setting any inital attributes
-		var attributes: Array[VoxelBlockyAttribute] = item.block_index.get_attributes()
-		for attribute: VoxelBlockyAttribute in attributes:
+		var attributes: Dictionary = {}
+		for attribute: VoxelBlockyAttribute in block_index.get_attributes():
 			if attribute is VoxelBlockyAttributeAxis:
-				print("handle axis")
+				
+				match abs(collision_normal):
+					Vector3.FORWARD:
+						attributes["axis"] = VoxelBlockyAttributeAxis.AXIS_Z
+					Vector3.UP:
+						attributes["axis"] = VoxelBlockyAttributeAxis.AXIS_Y
+					Vector3.RIGHT:
+						attributes["axis"] = VoxelBlockyAttributeAxis.AXIS_X
+				
 			elif attribute is VoxelBlockyAttributeDirection:
-				print("handle dir")
+				
+				match collision_normal:
+					Vector3.FORWARD:
+						attributes["axis"] = VoxelBlockyAttributeDirection.DIR_NEGATIVE_Z
+					Vector3.UP:
+						attributes["axis"] = VoxelBlockyAttributeDirection.DIR_POSITIVE_Y
+					Vector3.RIGHT:
+						attributes["axis"] = VoxelBlockyAttributeDirection.DIR_POSITIVE_X
+					Vector3.BACK:
+						attributes["axis"] = VoxelBlockyAttributeDirection.DIR_POSITIVE_Z
+					Vector3.DOWN:
+						attributes["axis"] = VoxelBlockyAttributeDirection.DIR_NEGATIVE_Y
+					Vector3.LEFT:
+						attributes["axis"] = VoxelBlockyAttributeDirection.DIR_NEGATIVE_X
+				
 			elif attribute is VoxelBlockyAttributeRotation:
-				print("handle rot")
+				printerr("No rotation handling")
+		
 		
 		# get index
-		var block_index: int = item.block_index.get_base_index()
+		var index: int
+		
+		match attributes.size():
+			0:
+				index = block_index.get_base_index()
+			1:
+				index = block_index.get_index_with_attribute(attributes.values()[0])
+			_:
+				index = block_index.get_index_with_attributes(attributes)
+		
 		
 		# place and remove from inventory
 		inventory.remove_amount_from_slot(slot_index, 1)
-		voxel_terrain.add_voxel(voxel_position, block_index)
+		voxel_terrain.add_voxel(voxel_position, index)

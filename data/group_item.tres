@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_6rrha")
-sort_property = &"name"
+sort_property = &"block_name"
 base_folder = "res://data/items"
 includes = Array[String](["*.tres"])
 excludes = Array[String]([])

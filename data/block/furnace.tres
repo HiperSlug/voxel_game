@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Block" load_steps=5 format=3 uid="uid://dpm5ukao5rnav"]
+
+[ext_resource type="Resource" uid="uid://kb1ndm8hmlrf" path="res://data/item/furnace.tres" id="1_jt6aa"]
+[ext_resource type="Script" uid="uid://bjjrrbx8ynb8y" path="res://data/classes/block/block.gd" id="1_kb1fx"]
+[ext_resource type="Script" uid="uid://c3k7kf66drxho" path="res://data/classes/drop/drop_item.gd" id="2_vdlyk"]
+
+[sub_resource type="Resource" id="Resource_0gieb"]
+script = ExtResource("2_vdlyk")
+item = ExtResource("1_jt6aa")
+amount = 1
+metadata/_custom_type_script = "uid://c3k7kf66drxho"
+
+[resource]
+script = ExtResource("1_kb1fx")
+name = &"furnace"
+drop = SubResource("Resource_0gieb")
+metadata/_custom_type_script = "uid://bjjrrbx8ynb8y"

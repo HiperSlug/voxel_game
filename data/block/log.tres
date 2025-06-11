@@ -1,18 +1,17 @@
-[gd_resource type="Resource" script_class="Block" load_steps=6 format=3 uid="uid://ffont18wrngo"]
+[gd_resource type="Resource" script_class="Block" load_steps=5 format=3 uid="uid://ffont18wrngo"]
 
-[ext_resource type="Script" uid="uid://bjjrrbx8ynb8y" path="res://data/block.gd" id="1_gx6cm"]
+[ext_resource type="Script" uid="uid://bjjrrbx8ynb8y" path="res://data/classes/block/block.gd" id="1_gx6cm"]
+[ext_resource type="Script" uid="uid://c3k7kf66drxho" path="res://data/classes/drop/drop_item.gd" id="2_aq2wt"]
 [ext_resource type="Resource" uid="uid://5rqe426nopy6" path="res://data/item/log.tres" id="2_t322b"]
-[ext_resource type="Script" uid="uid://dv6t6yxyyap8k" path="res://data/drop.gd" id="3_jamh7"]
-[ext_resource type="Resource" uid="uid://dokqrmewa8apa" path="res://data/block_index/log.tres" id="4_5a4h5"]
 
 [sub_resource type="Resource" id="Resource_cvvi0"]
-script = ExtResource("3_jamh7")
-item_drop = ExtResource("2_t322b")
-metadata/_custom_type_script = "uid://dv6t6yxyyap8k"
+script = ExtResource("2_aq2wt")
+item = ExtResource("2_t322b")
+amount = 1
+metadata/_custom_type_script = "uid://c3k7kf66drxho"
 
 [resource]
 script = ExtResource("1_gx6cm")
 name = &"log"
-block_index = ExtResource("4_5a4h5")
 drop = SubResource("Resource_cvvi0")
 metadata/_custom_type_script = "uid://bjjrrbx8ynb8y"

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Block" load_steps=5 format=3 uid="uid://diyv15fk0hr85"]
+
+[ext_resource type="Resource" uid="uid://bbj0eduhe8wgj" path="res://data/item/ice.tres" id="1_5b7h7"]
+[ext_resource type="Script" uid="uid://bjjrrbx8ynb8y" path="res://data/classes/block/block.gd" id="1_fi2gb"]
+[ext_resource type="Script" uid="uid://c3k7kf66drxho" path="res://data/classes/drop/drop_item.gd" id="2_4luh0"]
+
+[sub_resource type="Resource" id="Resource_keph1"]
+script = ExtResource("2_4luh0")
+item = ExtResource("1_5b7h7")
+amount = 1
+metadata/_custom_type_script = "uid://c3k7kf66drxho"
+
+[resource]
+script = ExtResource("1_fi2gb")
+name = &"ice"
+drop = SubResource("Resource_keph1")
+metadata/_custom_type_script = "uid://bjjrrbx8ynb8y"

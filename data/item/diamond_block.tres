@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="BlockItem" load_steps=6 format=3 uid="uid://yic408fuqjk3"]
+
+[ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/classes/item/block_item.gd" id="1_wr768"]
+[ext_resource type="Texture2D" uid="uid://va4atfhced42" path="res://assets/item_sprites.png" id="2_j3jeu"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t5jcs"]
+load_path = "res://.godot/imported/item_sprites.png-ea9d1a82578d97992467ca9c423662af.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3qnh"]
+atlas = SubResource("CompressedTexture2D_t5jcs")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c13oy"]
+atlas = ExtResource("2_j3jeu")
+region = Rect2(96, 0, 48, 48)
+
+[resource]
+script = ExtResource("1_wr768")
+block_name = &"diamond_block"
+name = "Diamond Block"
+single_texture = SubResource("AtlasTexture_c13oy")
+multi_texture = SubResource("AtlasTexture_w3qnh")
+stack_size = 999
+metadata/_custom_type_script = "uid://crsy4y4oa5e1m"

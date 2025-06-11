@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="BlockItem" load_steps=6 format=3 uid="uid://db0tgcic4nljy"]
+
+[ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/classes/item/block_item.gd" id="1_20l17"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_20l17"]
+load_path = "res://.godot/imported/item_sprites.png-ea9d1a82578d97992467ca9c423662af.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hy7m"]
+atlas = SubResource("CompressedTexture2D_20l17")
+region = Rect2(144, 96, 48, 48)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3cj0k"]
+load_path = "res://.godot/imported/item_sprites.png-ea9d1a82578d97992467ca9c423662af.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfpmq"]
+atlas = SubResource("CompressedTexture2D_3cj0k")
+region = Rect2(96, 96, 48, 48)
+
+[resource]
+script = ExtResource("1_20l17")
+block_name = &"glass"
+name = "Glass"
+single_texture = SubResource("AtlasTexture_wfpmq")
+multi_texture = SubResource("AtlasTexture_2hy7m")
+stack_size = 999
+metadata/_custom_type_script = "uid://crsy4y4oa5e1m"

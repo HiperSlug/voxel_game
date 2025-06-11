@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Block" load_steps=5 format=3 uid="uid://cosmfyoy7qgd1"]
+
+[ext_resource type="Resource" uid="uid://cg55vc704bs7x" path="res://data/item/wood_planks.tres" id="1_586i2"]
+[ext_resource type="Script" uid="uid://bjjrrbx8ynb8y" path="res://data/classes/block/block.gd" id="1_x5r3o"]
+[ext_resource type="Script" uid="uid://c3k7kf66drxho" path="res://data/classes/drop/drop_item.gd" id="2_kn51r"]
+
+[sub_resource type="Resource" id="Resource_uu7ns"]
+script = ExtResource("2_kn51r")
+item = ExtResource("1_586i2")
+amount = 1
+metadata/_custom_type_script = "uid://c3k7kf66drxho"
+
+[resource]
+script = ExtResource("1_x5r3o")
+name = &"wood_planks"
+drop = SubResource("Resource_uu7ns")
+metadata/_custom_type_script = "uid://bjjrrbx8ynb8y"

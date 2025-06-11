@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Block" load_steps=5 format=3 uid="uid://dvud26cnecyqi"]
+
+[ext_resource type="Resource" uid="uid://dd7q5v53wf72i" path="res://data/item/sponge.tres" id="1_4c20i"]
+[ext_resource type="Script" uid="uid://bjjrrbx8ynb8y" path="res://data/classes/block/block.gd" id="1_jrefx"]
+[ext_resource type="Script" uid="uid://c3k7kf66drxho" path="res://data/classes/drop/drop_item.gd" id="2_12taq"]
+
+[sub_resource type="Resource" id="Resource_copbc"]
+script = ExtResource("2_12taq")
+item = ExtResource("1_4c20i")
+amount = 1
+metadata/_custom_type_script = "uid://c3k7kf66drxho"
+
+[resource]
+script = ExtResource("1_jrefx")
+name = &"sponge"
+drop = SubResource("Resource_copbc")
+metadata/_custom_type_script = "uid://bjjrrbx8ynb8y"

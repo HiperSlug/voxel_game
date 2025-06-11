@@ -1,11 +1,14 @@
 extends Resource
 class_name BlockIndex
 
-@export var name: StringName
+var name: StringName
+
+func _init(new_name) -> void:
+	name = new_name
 
 static var blocks_library: VoxelBlockyTypeLibrary = preload("res://data/voxel_blocks/blocks_library.tres")
 
-
+static var AIR: int = blocks_library.get_model_index_default(&"air")
 
 # GET INDEXS
 var base_index_cache: int = -1

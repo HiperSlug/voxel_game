@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Block" load_steps=5 format=3 uid="uid://bx0pd1myjtph8"]
+
+[ext_resource type="Script" uid="uid://bjjrrbx8ynb8y" path="res://data/classes/block/block.gd" id="1_3d2ew"]
+[ext_resource type="Resource" uid="uid://yic408fuqjk3" path="res://data/item/diamond_block.tres" id="1_h6pm2"]
+[ext_resource type="Script" uid="uid://c3k7kf66drxho" path="res://data/classes/drop/drop_item.gd" id="2_3es3r"]
+
+[sub_resource type="Resource" id="Resource_urrs5"]
+script = ExtResource("2_3es3r")
+item = ExtResource("1_h6pm2")
+amount = 1
+metadata/_custom_type_script = "uid://c3k7kf66drxho"
+
+[resource]
+script = ExtResource("1_3d2ew")
+name = &"diamond_block"
+drop = SubResource("Resource_urrs5")
+metadata/_custom_type_script = "uid://bjjrrbx8ynb8y"

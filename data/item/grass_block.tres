@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="BlockItem" load_steps=5 format=3 uid="uid://cjfl2ra7xicu2"]
+
+[ext_resource type="Texture2D" uid="uid://va4atfhced42" path="res://assets/item_sprites.png" id="1_h5n4r"]
+[ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/classes/item/block_item.gd" id="1_hmt74"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6fj5"]
+atlas = ExtResource("1_h5n4r")
+region = Rect2(48, 192, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ked0g"]
+atlas = ExtResource("1_h5n4r")
+region = Rect2(0, 192, 48, 48)
+
+[resource]
+script = ExtResource("1_hmt74")
+block_name = &"grass"
+name = "Grass"
+single_texture = SubResource("AtlasTexture_ked0g")
+multi_texture = SubResource("AtlasTexture_y6fj5")
+stack_size = 999
+metadata/_custom_type_script = "uid://crsy4y4oa5e1m"

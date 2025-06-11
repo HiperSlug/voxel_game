@@ -8,5 +8,5 @@ sort_property = &"name"
 base_folder = "res://data/block"
 includes = Array[String](["*.tres"])
 excludes = Array[String]([])
-paths = Array[String](["res://data/block/dirt.tres", "res://data/block/grass.tres", "res://data/block/log.tres"])
+paths = Array[String](["res://data/block/cobble_stone.tres", "res://data/block/dark_stone.tres", "res://data/block/diamond_block.tres", "res://data/block/dirt.tres", "res://data/block/dirt_stone.tres", "res://data/block/fossil_dirt.tres", "res://data/block/furnace.tres", "res://data/block/glass.tres", "res://data/block/grass.tres", "res://data/block/ice.tres", "res://data/block/infested_log.tres", "res://data/block/leafy_dirt.tres", "res://data/block/leaves.tres", "res://data/block/log.tres", "res://data/block/magma_block.tres", "res://data/block/melon.tres", "res://data/block/pumpkin.tres", "res://data/block/sand.tres", "res://data/block/sand_brick.tres", "res://data/block/scary.tres", "res://data/block/soul_furnace.tres", "res://data/block/sponge.tres", "res://data/block/wood_planks.tres"])
 metadata/_custom_type_script = "uid://djxxqy4kdipif"

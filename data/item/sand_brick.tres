@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="BlockItem" load_steps=5 format=3 uid="uid://gav363j7xvyw"]
+
+[ext_resource type="Texture2D" uid="uid://va4atfhced42" path="res://assets/item_sprites.png" id="1_i7s28"]
+[ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/classes/item/block_item.gd" id="2_5441e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10bfj"]
+atlas = ExtResource("1_i7s28")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4a1ae"]
+atlas = ExtResource("1_i7s28")
+region = Rect2(0, 48, 48, 48)
+
+[resource]
+script = ExtResource("2_5441e")
+block_name = &"sand_brick"
+name = "Sandstone Brick"
+single_texture = SubResource("AtlasTexture_4a1ae")
+multi_texture = SubResource("AtlasTexture_10bfj")
+stack_size = 999
+metadata/_custom_type_script = "uid://crsy4y4oa5e1m"
