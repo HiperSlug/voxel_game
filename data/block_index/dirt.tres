@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BlockIndex" load_steps=2 format=3 uid="uid://ciywcdbg8nw32"]
+
+[ext_resource type="Script" uid="uid://b4424fh3f0aop" path="res://data/block_index.gd" id="1_2wml0"]
+
+[resource]
+script = ExtResource("1_2wml0")
+name = &"dirt"
+metadata/_custom_type_script = "uid://b4424fh3f0aop"

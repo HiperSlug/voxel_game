@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Block" load_steps=6 format=3 uid="uid://c7ebapatyqr57"]
+
+[ext_resource type="Resource" uid="uid://ciywcdbg8nw32" path="res://data/block_index/dirt.tres" id="1_7kfla"]
+[ext_resource type="Script" uid="uid://bjjrrbx8ynb8y" path="res://data/block.gd" id="1_vgxnm"]
+[ext_resource type="Resource" uid="uid://b5cqni0ftrufc" path="res://data/item/dirt.tres" id="2_x5lbq"]
+[ext_resource type="Script" uid="uid://dv6t6yxyyap8k" path="res://data/drop.gd" id="3_ogfg3"]
+
+[sub_resource type="Resource" id="Resource_1u32k"]
+script = ExtResource("3_ogfg3")
+item_drop = ExtResource("2_x5lbq")
+metadata/_custom_type_script = "uid://dv6t6yxyyap8k"
+
+[resource]
+script = ExtResource("1_vgxnm")
+name = &"dirt"
+block_index = ExtResource("1_7kfla")
+drop = SubResource("Resource_1u32k")
+metadata/_custom_type_script = "uid://bjjrrbx8ynb8y"

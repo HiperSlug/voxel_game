@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BlockItem" load_steps=6 format=3 uid="uid://b5cqni0ftrufc"]
+
+[ext_resource type="Resource" uid="uid://ciywcdbg8nw32" path="res://data/block_index/dirt.tres" id="1_a5drf"]
+[ext_resource type="Texture2D" uid="uid://va4atfhced42" path="res://assets/item_sprites.png" id="2_4n0ob"]
+[ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/block_item.gd" id="3_4n0ob"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iywga"]
+atlas = ExtResource("2_4n0ob")
+region = Rect2(144, 192, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7j3ly"]
+atlas = ExtResource("2_4n0ob")
+region = Rect2(96, 192, 48, 48)
+
+[resource]
+script = ExtResource("3_4n0ob")
+block_index = ExtResource("1_a5drf")
+name = "Dirt"
+single_texture = SubResource("AtlasTexture_7j3ly")
+multi_texture = SubResource("AtlasTexture_iywga")
+stack_size = 999
+metadata/_custom_type_script = "uid://crsy4y4oa5e1m"

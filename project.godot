@@ -21,11 +21,15 @@ Globals="*res://globals/globals.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/godot_resource_groups/plugin.cfg")
 
 [global_group]
 
 voxel_terrain=""
+
+[godot_resource_groups]
+
+auto_rebuild=true
 
 [gui]
 

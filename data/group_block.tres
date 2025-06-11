@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LookupGroup" load_steps=2 format=3 uid="uid://bsqt8d4sswrbm"]
+
+[ext_resource type="Script" uid="uid://djxxqy4kdipif" path="res://addons/lookup_group.gd" id="1_optit"]
+
+[resource]
+script = ExtResource("1_optit")
+sort_property = &"name"
+base_folder = "res://data/block"
+includes = Array[String](["*.tres"])
+excludes = Array[String]([])
+paths = Array[String](["res://data/block/dirt.tres", "res://data/block/grass.tres", "res://data/block/log.tres"])
+metadata/_custom_type_script = "uid://djxxqy4kdipif"

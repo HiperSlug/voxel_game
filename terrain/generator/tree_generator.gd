@@ -2,7 +2,7 @@ extends RefCounted
 class_name TreeGenerator
 
 static var trunk_height: int = 6
-static var log_type: int = load("res://terrain/blocks/blocks_library.tres").get_model_index_single_attribute(&"log", VoxelBlockyAttributeAxis.AXIS_Y)
+static var log_type: int = load("res://data/voxel_blocks/blocks_library.tres").get_model_index_single_attribute(&"log", VoxelBlockyAttributeAxis.AXIS_Y)
 static var channel := VoxelBuffer.CHANNEL_TYPE
 
 static func generate() -> Structure:

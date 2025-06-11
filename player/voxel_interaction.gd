@@ -4,23 +4,19 @@ class_name VoxelInteraction
 @export var crosshair_raycast: RayCast3D
 @export var inventory: Inventory
 @export var inventory_gui: InventoryGUI
-@onready var voxel_terrain: VoxelTerrain = get_tree().get_first_node_in_group("voxel_terrain")
-@onready var voxel_tool: VoxelTool = voxel_terrain.get_voxel_tool()
-@export var blocks_library: VoxelBlockyTypeLibrary
+@onready var voxel_terrain: MinecraftTerrain = get_tree().get_first_node_in_group("voxel_terrain")
 
-func _ready() -> void:
-	voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
 
 func _input(event: InputEvent) -> void:
 	# Handle input in player and then deliniate it here later
 	if event.is_action_pressed("destroy_voxel"):
-		try_remove_pointed_voxel()
+		try_remove_pointed()
 		
 	elif event.is_action_pressed("place_voxel"):
-		try_place_at_pointed()
+		try_place_pointed()
 
 
-func try_remove_pointed_voxel() -> void:
+func try_remove_pointed() -> void:
 	
 	# if colliding
 	if crosshair_raycast.is_colliding():
@@ -31,9 +27,9 @@ func try_remove_pointed_voxel() -> void:
 		var voxel_position: Vector3i = Vector3i(floor(collision_point))
 		
 		# set air
-		voxel_tool.set_voxel(voxel_position, 0) 
+		voxel_terrain.remove_voxel(voxel_position)
 
-func try_place_at_pointed() -> void:
+func try_place_pointed() -> void:
 	
 	if crosshair_raycast.is_colliding():
 		
@@ -43,13 +39,30 @@ func try_place_at_pointed() -> void:
 		
 		var voxel_position: Vector3i = Vector3i(floor(collision_point))
 		
-		# get item
+		# has an item
 		var slot_index: int = inventory_gui.selected_hotbar_slot
 		if inventory.is_slot_empty(slot_index):
 			return
-		var item_name: StringName = inventory.inventory_slots[slot_index].item.name.to_lower()
-		var item_index: int = blocks_library.get_model_index_single_attribute(item_name, VoxelBlockyAttributeAxis.AXIS_Y)
 		
+		# is a block
+		var item: Item = inventory.inventory_slots[slot_index].item
+		if not item is BlockItem:
+			return
+		item = item as BlockItem
+		
+		# setting any inital attributes
+		var attributes: Array[VoxelBlockyAttribute] = item.block_index.get_attributes()
+		for attribute: VoxelBlockyAttribute in attributes:
+			if attribute is VoxelBlockyAttributeAxis:
+				print("handle axis")
+			elif attribute is VoxelBlockyAttributeDirection:
+				print("handle dir")
+			elif attribute is VoxelBlockyAttributeRotation:
+				print("handle rot")
+		
+		# get index
+		var block_index: int = item.block_index.get_base_index()
+		
+		# place and remove from inventory
 		inventory.remove_amount_from_slot(slot_index, 1)
-		
-		voxel_tool.set_voxel(voxel_position, item_index)
+		voxel_terrain.add_voxel(voxel_position, block_index)

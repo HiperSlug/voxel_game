@@ -3,7 +3,9 @@ class_name MyGenerator
 
 @export var noise: FastNoiseLite = FastNoiseLite.new()
 @export var noise_amplitude: int = 10
-@export var blocks_library: VoxelBlockyTypeLibrary = preload("res://terrain/blocks/blocks_library.tres")
+@export var blocks_library: VoxelBlockyTypeLibrary = preload("res://data/voxel_blocks/blocks_library.tres")
+
+# CHANGE TO USE BLOCKS
 
 var log_index: int = blocks_library.get_model_index_single_attribute(&"log", VoxelBlockyAttributeAxis.AXIS_Y)
 var dirt_index: int = blocks_library.get_model_index_default(&"dirt")
