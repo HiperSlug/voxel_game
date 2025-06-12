@@ -3,9 +3,12 @@ class_name RecursiveGroup
 
 @export var do_recursion: bool = true
 
+func reload() -> void:
+	paths = get_matching_paths(includes, excludes)
+
 func get_matching_paths(includes: Array[String], excludes: Array[String]) -> Array[String]:
 	var path_verifier := PathVerifier.new(base_folder, includes, excludes)
-	var matching_paths := []
+	var matching_paths: Array[String] = []
 	
 	if not DirAccess.dir_exists_absolute(base_folder):
 		push_error("Failed to open directory: " + base_folder)
@@ -20,6 +23,9 @@ func walk_directory(current_path: String, matching_paths: Array, path_verifier: 
 		return
 	
 	var dir := DirAccess.open(current_path)
+	if dir == null:
+		printerr("invalid path")
+	
 	dir.list_dir_begin()
 	var file_name := dir.get_next()
 	while file_name != "":

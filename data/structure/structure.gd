@@ -1,5 +1,5 @@
 extends Resource
 class_name Structure
 
-var offset: Vector3i = Vector3i.ZERO
-var voxels: VoxelBuffer = VoxelBuffer.new()
+@export var offset: Vector3i
+@export var data: PackedByteArray

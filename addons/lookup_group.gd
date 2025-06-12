@@ -37,7 +37,20 @@ func get_resource_from_property(value: Variant):
 			return
 	
 	if not resource_dict.has(value):
-		printerr("invalid value")
-		return
+		update_dictionary()
+		if not resource_dict.has(value):
+			printerr("invalid value")
+			return
 		
 	return resource_dict[value]
+
+
+var resources: Array[Resource] = []
+func get_random(rng: RandomNumberGenerator) -> Resource:
+	if resources.size() == 0:
+		load_all_into(resources)
+		if resources.size() == 0:
+			printerr("no resources in group")
+	
+	var seeded_index: int = rng.randi() % resources.size()
+	return resources[seeded_index]

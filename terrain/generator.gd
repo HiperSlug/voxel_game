@@ -3,6 +3,7 @@ class_name MyGenerator
 
 @export var noise: FastNoiseLite = FastNoiseLite.new()
 @export var noise_amplitude: int = 10
+@export var tree_group: LookupGroup
 var blocks: LookupGroup = preload("res://data/group_block.tres")
 
 
@@ -11,7 +12,7 @@ var grass_index: int = blocks.get_resource_from_property(&"grass").get_block_ind
 var air_index: int = BlockIndexer.AIR
 
 
-
+var rng := RandomNumberGenerator.new()
 func _generate_pass(voxel_tool: VoxelToolMultipassGenerator, pass_index: int):
 	
 	voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
@@ -49,7 +50,6 @@ func _generate_pass(voxel_tool: VoxelToolMultipassGenerator, pass_index: int):
 	elif pass_index == 1:
 		
 		# trees
-		var rng := RandomNumberGenerator.new()
 		rng.seed = get_seed_from_min_position(min_pos)
 		
 		# 4 tree attempts
@@ -65,10 +65,13 @@ func _generate_pass(voxel_tool: VoxelToolMultipassGenerator, pass_index: int):
 				continue
 			
 			var position: Vector3i = Vector3i(x, y, z)
-			var structure: Structure = TreeGenerator.generate(rng)
-			var lower_corner_position := position - structure.offset
+			var tree: Structure = tree_group.get_random(rng)
+			var lower_corner_position := position - tree.offset
 			
-			voxel_tool.paste_masked(lower_corner_position, structure.voxels, 1 << VoxelBuffer.CHANNEL_TYPE, VoxelBuffer.CHANNEL_TYPE, 0)
+			var voxel_buffer: VoxelBuffer = VoxelBuffer.new()
+			VoxelBlockSerializer.deserialize_from_byte_array(tree.data, voxel_buffer, true)
+			
+			voxel_tool.paste_masked(lower_corner_position, voxel_buffer, 1 << VoxelBuffer.CHANNEL_TYPE, VoxelBuffer.CHANNEL_TYPE, 0)
 
 
 func get_seed_from_min_position(pos: Vector3i) -> int:

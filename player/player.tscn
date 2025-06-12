@@ -1,28 +1,30 @@
-[gd_scene load_steps=10 format=3 uid="uid://u02jnx426ebj"]
+[gd_scene load_steps=9 format=3 uid="uid://u02jnx426ebj"]
 
 [ext_resource type="Script" uid="uid://bd8gsky0meamh" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://bvbty2kiytot7" path="res://player/pickup_box.gd" id="2_qjkh3"]
-[ext_resource type="Script" uid="uid://bauerl8icmj7p" path="res://player/player_head.gd" id="2_rkbax"]
 [ext_resource type="Script" uid="uid://dcmssicw30m0r" path="res://player/voxel_interaction.gd" id="3_g1dw6"]
 [ext_resource type="Script" uid="uid://b5r02im6iinj5" path="res://inventory/inventory.gd" id="4_yw30f"]
 [ext_resource type="PackedScene" uid="uid://c3bmhrel5r5xl" path="res://inventory/inventory_gui.tscn" id="6_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://dngghfsfrwc23" path="res://chat/chat_gui.tscn" id="7_boad6"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_yw30f"]
-size = Vector3(0.6, 1.8, 0.6)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g6k8r"]
+radius = 0.35
+height = 1.8
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yw30f"]
 radius = 0.9
 height = 2.5
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head") groups=["player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("head", "voxel_interaction", "inventory_gui") groups=["player"]]
 collision_layer = 0
 script = ExtResource("1_oul6g")
 head = NodePath("PlayerHead")
+voxel_interaction = NodePath("VoxelInteraction")
+inventory_gui = NodePath("GUI/InventoryGUI")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-shape = SubResource("BoxShape3D_yw30f")
+shape = SubResource("CapsuleShape3D_g6k8r")
 
 [node name="PickupBox" type="Area3D" parent="." node_paths=PackedStringArray("inventory")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -36,14 +38,13 @@ shape = SubResource("CapsuleShape3D_yw30f")
 
 [node name="PlayerHead" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
-script = ExtResource("2_rkbax")
 
 [node name="Camera3D" type="Camera3D" parent="PlayerHead"]
 
 [node name="VoxelViewer" type="VoxelViewer" parent="PlayerHead/Camera3D"]
 
 [node name="CrosshairRayCast" type="RayCast3D" parent="PlayerHead"]
-target_position = Vector3(0, 0, -5)
+target_position = Vector3(0, 0, -20)
 collide_with_areas = true
 
 [node name="VoxelInteraction" type="Node" parent="." node_paths=PackedStringArray("crosshair_raycast", "inventory", "inventory_gui")]
@@ -52,7 +53,7 @@ crosshair_raycast = NodePath("../PlayerHead/CrosshairRayCast")
 inventory = NodePath("../Inventory")
 inventory_gui = NodePath("../GUI/InventoryGUI")
 
-[node name="Inventory" type="Node" parent="."]
+[node name="Inventory" type="Node" parent="." groups=["inventory"]]
 script = ExtResource("4_yw30f")
 
 [node name="GUI" type="CanvasLayer" parent="."]
@@ -73,9 +74,18 @@ grow_vertical = 2
 [node name="InventoryGUI" parent="GUI" node_paths=PackedStringArray("inventory") instance=ExtResource("6_g6k8r")]
 inventory = NodePath("../../Inventory")
 
-[node name="ChatGUI" parent="GUI" instance=ExtResource("7_boad6")]
-anchors_preset = 14
+[node name="Control" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = 217.0
-offset_bottom = 217.0
+offset_top = -290.0
+offset_right = 274.0
+offset_bottom = 290.0
+grow_vertical = 2
+
+[node name="ChatGUI" parent="GUI/Control" instance=ExtResource("7_boad6")]
+layout_mode = 1
+
+[connection signal="done_chatting" from="GUI/Control/ChatGUI" to="." method="_on_chat_gui_done_chatting"]
+[connection signal="start_chatting" from="GUI/Control/ChatGUI" to="." method="_on_chat_gui_start_chatting"]

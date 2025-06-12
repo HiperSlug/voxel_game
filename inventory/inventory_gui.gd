@@ -20,23 +20,12 @@ func connect_inventory_slots(inventory_slots: Array[InventorySlot]) -> void:
 			var inv_slot_gui: PanelContainer = hotbar.get_child(i)
 			inv_slot_gui.set_item_slot(item_slot)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("next_slot"):
-		select_slot(selected_hotbar_slot + 1)
-		return
-		
-	elif event.is_action_pressed("last_slot"):
-		select_slot(selected_hotbar_slot - 1)
-		return
-	
-	
-	for i: int in range(10):
-		
-		var slot_string: String = "slot_{0}".format([str(i + 1)])
-		if event.is_action_pressed(slot_string):
-			select_slot(i)
-			return
 
+func next_slot() -> void:
+	select_slot(selected_hotbar_slot + 1)
+
+func last_slot() -> void:
+	select_slot(selected_hotbar_slot - 1)
 
 func select_slot(new_index: int) -> void:
 	new_index = new_index % hotbar.get_child_count()

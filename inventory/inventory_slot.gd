@@ -20,7 +20,7 @@ func set_count(new_amount: int) -> int:
 	
 	var left_over_amount: int = 0
 	
-	amount_changed.emit(new_amount)
+	
 	
 	if new_amount <= 0:
 		is_empty = true
@@ -39,7 +39,7 @@ func set_count(new_amount: int) -> int:
 	
 	amount = clampi(new_amount, 0, max_amount)
 	
-	
+	amount_changed.emit(amount)
 	
 	return left_over_amount
 

@@ -80,6 +80,7 @@ shape = SubResource("CylinderShape3D_bjp4d")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+texture_filter = 0
 
 [node name="PickupArea" type="Area3D" parent="."]
 collision_layer = 4

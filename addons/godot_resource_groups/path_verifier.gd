@@ -1,11 +1,13 @@
 @tool
 class_name PathVerifier
 
+## MODIFIED. I HAVE NO IDEA WHATS HAPPENING SO I JUST USED CHATGPT TO MODIFY IT TO ALLOW NESTED SEARCHING ##
 
 var _include_regexes:Array[RegEx]
 var _exclude_regexes:Array[RegEx]
+var base_folder: String
 
-func _init(base_folder:String, include_patterns:Array[String], exclude_patterns:Array[String]):
+func _init(_base_folder:String, include_patterns:Array[String], exclude_patterns:Array[String]):
 	# compile the include and exclude patterns to regular expressions, so we don't
 	# have to do it for each file
 	_include_regexes = []
@@ -15,17 +17,21 @@ func _init(base_folder:String, include_patterns:Array[String], exclude_patterns:
 	for pattern in include_patterns:
 		if pattern == "" or pattern == null:
 			continue
-		_include_regexes.append(_compile_pattern(base_folder, pattern))
+		if not pattern.contains("/"):
+			pattern = "**/" + pattern  # match in nested folders too
+		_include_regexes.append(_compile_pattern(pattern))
 
 	for pattern in exclude_patterns:
 		if pattern == "" or pattern == null:
 			continue
-		_exclude_regexes.append(_compile_pattern(base_folder, pattern))
+		if not pattern.contains("/"):
+			pattern = "**/" + pattern
+		_exclude_regexes.append(_compile_pattern(pattern))
 
 
 
 ## Compiles the given pattern to a regular expression.
-func _compile_pattern(base_folder:String, pattern:String) -> RegEx:
+func _compile_pattern(pattern:String) -> RegEx:
 	# ** - matches zero or more characters (including "/")
 	# * - matches zero or more characters (excluding "/")
 	# ? - matches one character
@@ -38,12 +44,12 @@ func _compile_pattern(base_folder:String, pattern:String) -> RegEx:
 	# the pattern is anchored at the beginning and end of the string
 	# the pattern is case-sensitive
 
-	var regex = "^" + _escape_string(base_folder)
+	var regex = "^"
 	
 	# fix for #21, only append trailing slash if the incoming path
 	# doesn't already have one
-	if not base_folder.ends_with("/"):
-		regex += "/"
+	#if not base_folder.ends_with("/"):
+		#regex += "/"
 		
 	var i = 0
 	var len = pattern.length()
@@ -72,6 +78,7 @@ func _compile_pattern(base_folder:String, pattern:String) -> RegEx:
 
 	var  result = RegEx.new()
 	result.compile(regex)
+	
 	return result
 
 
@@ -119,6 +126,15 @@ func _escape_character(c:String) -> String:
 
 
 func matches(file:String) -> bool:
+	
+	if not file.begins_with(base_folder):
+		return false
+	
+	var relative_path = file.substr(base_folder.length(), file.length() - base_folder.length())
+	if relative_path.begins_with("/"):
+		relative_path = relative_path.substr(1, relative_path.length() - 1)
+	
+	
 	# the group definition has a list of include and exclude patterns
 	# if the list of include patterns is empty, all files match
 	# any file that matches an exclude pattern is excluded
@@ -129,19 +145,19 @@ func matches(file:String) -> bool:
 		var found = false
 		# the file must match at least one include pattern
 		for item in _include_regexes:
-			if item.search(file) != null:
+			if item.search(relative_path) != null:
 				found = true
 				break
 			
 		if not found:
-			if file.contains(".txt"):
+			if relative_path.contains(".txt"):
 				print("file ", file , " did not match any regex")
 			return false
 
 	# the file must not match any exclude pattern
 	for item in _exclude_regexes:
-		if item.search(file) != null:
-			if file.contains(".txt"):
+		if item.search(relative_path) != null:
+			if relative_path.contains(".txt"):
 				print("file ", file , " was excluded ")
 			return false
 

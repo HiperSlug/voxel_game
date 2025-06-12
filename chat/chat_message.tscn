@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://paa1q602kqp"]
+
+[node name="ChatMessage" type="Label"]
+custom_minimum_size = Vector2(1, 1)
+offset_right = 40.0
+offset_bottom = 23.0
+autowrap_mode = 3

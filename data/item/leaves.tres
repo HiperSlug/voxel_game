@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BlockItem" load_steps=2 format=3 uid="uid://bxbdyfr5rxq0q"]
+
+[ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/item/block_item.gd" id="1_u4t20"]
+
+[resource]
+script = ExtResource("1_u4t20")
+block_name = &"leaves"
+name = "Leaves"
+stack_size = 999
+metadata/_custom_type_script = "uid://crsy4y4oa5e1m"

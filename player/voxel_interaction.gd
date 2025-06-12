@@ -7,15 +7,6 @@ class_name VoxelInteraction
 @onready var voxel_terrain: MinecraftTerrain = get_tree().get_first_node_in_group("voxel_terrain")
 
 
-func _input(event: InputEvent) -> void:
-	# Handle input in player and then deliniate it here later
-	if event.is_action_pressed("destroy_voxel"):
-		try_remove_pointed()
-		
-	elif event.is_action_pressed("place_voxel"):
-		try_place_pointed()
-
-
 func try_remove_pointed() -> void:
 	
 	# if colliding

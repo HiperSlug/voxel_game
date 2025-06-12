@@ -2,42 +2,122 @@ extends CharacterBody3D
 class_name Player
 
 
+var state: STATE = STATE.FLY
+enum STATE {
+	NORMAL,
+	FLY,
+}
+
+var can_input: bool = true
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
-
-@export var head: PlayerHead
+@export var head: Marker3D
+@export var voxel_interaction: VoxelInteraction
+@export var inventory_gui: InventoryGUI
+@export var mouse_sensitivity: float = .004
+@export var fly_speed: float = 10
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-	
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("left", "right", "forward", "back")
-	# Get head's forward direction, flattened on XZ
-	var head_forward := head.global_transform.basis.z
-	head_forward.y = 0
-	head_forward = head_forward.normalized()
+	match state:
+		STATE.NORMAL:
+			
+			if not is_on_floor():
+				velocity += get_gravity() * delta
+			
+			
+			var input_dir := Input.get_vector("left", "right", "forward", "back")
+			var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+			if not can_input:
+				direction = Vector3.ZERO
+			
+			if direction:
+				velocity.x = direction.x * SPEED
+				velocity.z = direction.z * SPEED
+			else:
+				velocity.x = move_toward(velocity.x, 0, SPEED)
+				velocity.z = move_toward(velocity.z, 0, SPEED)
+			
+			move_and_slide()
+		
+		
+		STATE.FLY:
+			var input_dir := Input.get_vector("left", "right", "forward", "back")
+			var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+			if not can_input:
+				direction = Vector3.ZERO
+			
+			if direction:
+				velocity.x = direction.x * fly_speed
+				velocity.z = direction.z * fly_speed
+			else:
+				velocity.x = 0
+				velocity.z = 0
+			
+			var y_dir := Input.get_axis("crouch", "jump")
+			if not can_input:
+				y_dir = 0
+			velocity.y = y_dir * fly_speed
+			
+			move_and_slide()
 
-	# Get right direction on the horizontal plane
-	var head_right := head.global_transform.basis.x
-	head_right.y = 0
-	head_right = head_right.normalized()
 
-	# Combine input on flattened basis
-	var direction := (head_right * input_dir.x + head_forward * input_dir.y).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func _input(event: InputEvent) -> void:
 	
-	move_and_slide()
+	if not can_input:
+		return
+	
+	if event.is_action_pressed("destroy_voxel"):
+		voxel_interaction.try_remove_pointed()
+		
+	elif event.is_action_pressed("place_voxel"):
+		voxel_interaction.try_place_pointed()
+	
+	elif event.is_action_pressed("jump") and is_on_floor():
+		if is_on_floor():
+			velocity.y = JUMP_VELOCITY
+
+	elif event.is_action_pressed("crouch"):
+		if state == STATE.NORMAL:
+			pass
+	
+	
+	elif event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		var delta_rotation: Vector2 = -event.relative * mouse_sensitivity
+		
+		# yaw
+		rotate_y(delta_rotation.x)
+		
+		# pitch
+		var new_rotation_x: float = delta_rotation.y + head.rotation.x
+		new_rotation_x = clampf(new_rotation_x, - PI / 2, PI / 2)
+		head.rotation.x = new_rotation_x
+	
+	elif event.is_action_pressed("next_slot"):
+		inventory_gui.next_slot()
+		return
+		
+	elif event.is_action_pressed("last_slot"):
+		inventory_gui.last_slot()
+		return
+	
+	
+	for i: int in range(10):
+		
+		var slot_string: String = "slot_{0}".format([str(i + 1)])
+		if event.is_action_pressed(slot_string):
+			inventory_gui.select_slot(i)
+			return
+
+
+
+func _on_chat_gui_done_chatting() -> void:
+	can_input = true
+
+
+func _on_chat_gui_start_chatting() -> void:
+	can_input = false

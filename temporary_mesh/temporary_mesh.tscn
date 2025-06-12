@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsytdlxyd8dtu"]
+
+[ext_resource type="Script" uid="uid://c3bkairr6doec" path="res://temporary_mesh/temporary_mesh.gd" id="1_yc1si"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yc1si"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0, 0, 1)
+disable_receive_shadows = true
+
+[node name="TemporaryMesh" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_yc1si")
+script = ExtResource("1_yc1si")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,6 +1,7 @@
-[gd_resource type="VoxelBlockyTypeLibrary" load_steps=59 format=3 uid="uid://bj6utmjyjnqfe"]
+[gd_resource type="VoxelBlockyTypeLibrary" load_steps=61 format=3 uid="uid://bj6utmjyjnqfe"]
 
 [ext_resource type="Material" uid="uid://cu7gkd8bsqn0b" path="res://data/voxel_library/blocks_material.tres" id="1_h4qrj"]
+[ext_resource type="Texture2D" uid="uid://d3xroco2tvb6d" path="res://assets/blocks.png" id="2_ajit0"]
 
 [sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_6otl2"]
 
@@ -85,6 +86,13 @@ base_model = SubResource("VoxelBlockyModelCube_5hu56")
 attributes = Array[VoxelBlockyAttribute]([SubResource("VoxelBlockyAttributeAxis_5hu56")])
 resource_name = "log"
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2rjai"]
+transparency = 4
+depth_draw_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_ajit0")
+texture_filter = 0
+
 [sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_h4qrj"]
 atlas_size_in_tiles = Vector2i(10, 10)
 tile_left = Vector2i(3, 1)
@@ -93,7 +101,8 @@ tile_bottom = Vector2i(3, 1)
 tile_top = Vector2i(3, 1)
 tile_back = Vector2i(3, 1)
 tile_front = Vector2i(3, 1)
-material_override_0 = ExtResource("1_h4qrj")
+transparency_index = 1
+material_override_0 = SubResource("StandardMaterial3D_2rjai")
 
 [sub_resource type="VoxelBlockyType" id="VoxelBlockyType_y2pqq"]
 unique_name = &"leaves"

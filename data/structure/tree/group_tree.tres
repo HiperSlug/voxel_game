@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="RandomGroup" load_steps=2 format=3 uid="uid://bcpud1cmxvg6k"]
+[gd_resource type="Resource" script_class="LookupGroup" load_steps=2 format=3 uid="uid://d16gru7m6ndo8"]
 
-[ext_resource type="Script" uid="uid://b1js7h2uavi0f" path="res://addons/random_group.gd" id="1_4eab6"]
+[ext_resource type="Script" uid="uid://djxxqy4kdipif" path="res://addons/lookup_group.gd" id="1_4eab6"]
 
 [resource]
 script = ExtResource("1_4eab6")
+sort_property = &""
 do_recursion = true
 base_folder = "res://data/structure/tree"
 includes = Array[String](["*.tres"])
