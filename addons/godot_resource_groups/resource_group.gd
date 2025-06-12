@@ -5,7 +5,6 @@
 class_name ResourceGroup
 extends Resource
 
-const PathVerifier = preload("path_verifier.gd")
 
 ## The base folder for locating files in this resource group.
 @export_dir var base_folder:String = ""

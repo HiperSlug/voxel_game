@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="Block" load_steps=7 format=3 uid="uid://djcj27olo4mop"]
 
 [ext_resource type="Resource" uid="uid://d37y0elbiayyu" path="res://data/item/sapling.tres" id="1_tp628"]
-[ext_resource type="Script" uid="uid://c3k7kf66drxho" path="res://data/classes/drop/drop_item.gd" id="2_tp628"]
-[ext_resource type="Script" uid="uid://cjlvdi1t0nr1" path="res://data/classes/drop/drop_chance.gd" id="3_a4y55"]
-[ext_resource type="Script" uid="uid://bjjrrbx8ynb8y" path="res://data/classes/block/block.gd" id="4_luwqu"]
+[ext_resource type="Script" uid="uid://c3k7kf66drxho" path="res://data/drop/drop_item.gd" id="2_tp628"]
+[ext_resource type="Script" uid="uid://cjlvdi1t0nr1" path="res://data/drop/drop_chance.gd" id="3_a4y55"]
+[ext_resource type="Script" uid="uid://bjjrrbx8ynb8y" path="res://data/block/block.gd" id="4_luwqu"]
 
 [sub_resource type="Resource" id="Resource_a4y55"]
 script = ExtResource("2_tp628")

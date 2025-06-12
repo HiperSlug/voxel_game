@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LookupGroup" load_steps=2 format=3 uid="uid://b1mkhq78loqvs"]
+
+[ext_resource type="Script" uid="uid://djxxqy4kdipif" path="res://addons/lookup_group.gd" id="1_dcvnp"]
+
+[resource]
+script = ExtResource("1_dcvnp")
+sort_property = &"base_folder"
+do_recursion = true
+base_folder = "res://data/structure"
+includes = Array[String](["group*.tres"])
+excludes = Array[String](["group_structures.tres"])
+paths = Array[String]([])
+metadata/_custom_type_script = "uid://djxxqy4kdipif"

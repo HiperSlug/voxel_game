@@ -1,7 +1,6 @@
 extends Marker3D
 class_name PlayerHead
 
-@export var player: CharacterBody3D
 @export var mouse_sensitivity: float = .004
 
 func _ready() -> void:
@@ -10,12 +9,12 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		
 		var delta_rotation: Vector2 = -event.relative * mouse_sensitivity
 		
 		# yaw
-		player.rotate_y(delta_rotation.x)
+		rotate_y(delta_rotation.x)
 		
 		# pitch
 		var new_rotation_x: float = delta_rotation.y + rotation.x

@@ -1,18 +1,22 @@
 extends RefCounted
 class_name TreeGenerator
 
-static var trunk_height: int = 6
-static var log_type: int = load("res://data/voxel_blocks/blocks_library.tres").get_model_index_single_attribute(&"log", VoxelBlockyAttributeAxis.AXIS_Y)
+# voxel index
+static var blocks: LookupGroup = preload("res://data/group_block.tres")
+static var log_index: int = blocks.get_resource_from_property(&"log").get_block_index().get_index_with_attributes({
+	"axis" : VoxelBlockyAttributeAxis.AXIS_Y,
+})
+
+# channel
 static var channel := VoxelBuffer.CHANNEL_TYPE
 
-static func generate() -> Structure:
+static func generate(_rng: RandomNumberGenerator) -> Structure:
+	
 	
 	var voxels: Dictionary = {}
 	
 	# Trunk
-	for y: int in trunk_height:
-		var pos: Vector3i = Vector3(0, y, 0)
-		voxels[pos] = log_type
+	voxels[Vector3i(0, 0, 0)] = log_index
 	
 	
 	# Creating structure

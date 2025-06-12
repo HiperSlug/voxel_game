@@ -1,12 +1,12 @@
 extends Resource
-class_name BlockIndex
+class_name BlockIndexer
 
 var name: StringName
 
 func _init(new_name) -> void:
 	name = new_name
 
-static var blocks_library: VoxelBlockyTypeLibrary = preload("res://data/voxel_blocks/blocks_library.tres")
+static var blocks_library: VoxelBlockyTypeLibrary = preload("res://data/voxel_library/blocks_library.tres")
 
 static var AIR: int = blocks_library.get_model_index_default(&"air")
 
@@ -47,5 +47,5 @@ func get_attributes() -> Array[VoxelBlockyAttribute]:
 			cached_attributes = block.attributes
 			return block.attributes
 	
-	printerr("invalid blockindex name")
+	printerr("invalid blockindexer name")
 	return []

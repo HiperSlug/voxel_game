@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Block" load_steps=5 format=3 uid="uid://bp215ruujeg1o"]
 
 [ext_resource type="Resource" uid="uid://gav363j7xvyw" path="res://data/item/sand_brick.tres" id="1_aarys"]
-[ext_resource type="Script" uid="uid://bjjrrbx8ynb8y" path="res://data/classes/block/block.gd" id="1_v4h0u"]
-[ext_resource type="Script" uid="uid://c3k7kf66drxho" path="res://data/classes/drop/drop_item.gd" id="2_nq6pt"]
+[ext_resource type="Script" uid="uid://bjjrrbx8ynb8y" path="res://data/block/block.gd" id="1_v4h0u"]
+[ext_resource type="Script" uid="uid://c3k7kf66drxho" path="res://data/drop/drop_item.gd" id="2_nq6pt"]
 
 [sub_resource type="Resource" id="Resource_sek7g"]
 script = ExtResource("2_nq6pt")

@@ -1,4 +1,4 @@
-extends ResourceGroup
+extends RecursiveGroup
 class_name LookupGroup
 
 

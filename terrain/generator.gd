@@ -3,14 +3,14 @@ class_name MyGenerator
 
 @export var noise: FastNoiseLite = FastNoiseLite.new()
 @export var noise_amplitude: int = 10
-@export var blocks_library: VoxelBlockyTypeLibrary = preload("res://data/voxel_blocks/blocks_library.tres")
+var blocks: LookupGroup = preload("res://data/group_block.tres")
 
-# CHANGE TO USE BLOCKS
 
-var log_index: int = blocks_library.get_model_index_single_attribute(&"log", VoxelBlockyAttributeAxis.AXIS_Y)
-var dirt_index: int = blocks_library.get_model_index_default(&"dirt")
-var grass_index: int = blocks_library.get_model_index_default(&"grass")
-var air_index: int = blocks_library.get_model_index_default(&"air")
+var dirt_index: int = blocks.get_resource_from_property(&"dirt").get_block_index().get_base_index()
+var grass_index: int = blocks.get_resource_from_property(&"grass").get_block_index().get_base_index()
+var air_index: int = BlockIndexer.AIR
+
+
 
 func _generate_pass(voxel_tool: VoxelToolMultipassGenerator, pass_index: int):
 	
@@ -40,11 +40,11 @@ func _generate_pass(voxel_tool: VoxelToolMultipassGenerator, pass_index: int):
 						
 					elif y == terrain_height:
 						
-						voxel_tool.set_voxel(position, grass_index)
+						voxel_tool.set_voxel(position, grass_index) 
 						
 					else:
 						
-						voxel_tool.set_voxel(position, air_index)
+						voxel_tool.set_voxel(position, air_index) 
 	
 	elif pass_index == 1:
 		
@@ -65,7 +65,7 @@ func _generate_pass(voxel_tool: VoxelToolMultipassGenerator, pass_index: int):
 				continue
 			
 			var position: Vector3i = Vector3i(x, y, z)
-			var structure: Structure = TreeGenerator.generate()
+			var structure: Structure = TreeGenerator.generate(rng)
 			var lower_corner_position := position - structure.offset
 			
 			voxel_tool.paste_masked(lower_corner_position, structure.voxels, 1 << VoxelBuffer.CHANNEL_TYPE, VoxelBuffer.CHANNEL_TYPE, 0)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="RandomGroup" load_steps=2 format=3 uid="uid://ujvfjubu72vn"]
+
+[ext_resource type="Script" uid="uid://b1js7h2uavi0f" path="res://addons/random_group.gd" id="1_2gg3n"]
+
+[resource]
+script = ExtResource("1_2gg3n")
+do_recursion = true
+base_folder = "res://data/structure/bill/"
+includes = Array[String](["*.tres"])
+excludes = Array[String](["{}.tres"])
+paths = Array[String]([])

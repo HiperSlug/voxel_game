@@ -1,4 +1,6 @@
 @tool
+class_name PathVerifier
+
 
 var _include_regexes:Array[RegEx]
 var _exclude_regexes:Array[RegEx]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BlockItem" load_steps=6 format=3 uid="uid://db0tgcic4nljy"]
 
-[ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/classes/item/block_item.gd" id="1_20l17"]
+[ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/item/block_item.gd" id="1_20l17"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_20l17"]
 load_path = "res://.godot/imported/item_sprites.png-ea9d1a82578d97992467ca9c423662af.ctex"

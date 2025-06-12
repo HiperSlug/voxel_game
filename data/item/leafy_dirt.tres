@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BlockItem" load_steps=5 format=3 uid="uid://3v8tomkvy2rg"]
 
-[ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/classes/item/block_item.gd" id="1_1wg5n"]
+[ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/item/block_item.gd" id="1_1wg5n"]
 [ext_resource type="Texture2D" uid="uid://va4atfhced42" path="res://assets/item_sprites.png" id="1_dmfae"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lfm8a"]

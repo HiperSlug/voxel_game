@@ -50,11 +50,11 @@ func try_place_pointed() -> void:
 		if not item is BlockItem:
 			return
 		
-		var block_index: BlockIndex = item.get_block_index()
+		var block_indexer: BlockIndexer = item.get_block_index()
 		
 		# setting any inital attributes
 		var attributes: Dictionary = {}
-		for attribute: VoxelBlockyAttribute in block_index.get_attributes():
+		for attribute: VoxelBlockyAttribute in block_indexer.get_attributes():
 			if attribute is VoxelBlockyAttributeAxis:
 				
 				match abs(collision_normal):
@@ -90,11 +90,11 @@ func try_place_pointed() -> void:
 		
 		match attributes.size():
 			0:
-				index = block_index.get_base_index()
+				index = block_indexer.get_base_index()
 			1:
-				index = block_index.get_index_with_attribute(attributes.values()[0])
+				index = block_indexer.get_index_with_attribute(attributes.values()[0])
 			_:
-				index = block_index.get_index_with_attributes(attributes)
+				index = block_indexer.get_index_with_attributes(attributes)
 		
 		
 		# place and remove from inventory

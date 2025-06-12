@@ -1,6 +1,6 @@
 [gd_resource type="VoxelBlockyTypeLibrary" load_steps=59 format=3 uid="uid://bj6utmjyjnqfe"]
 
-[ext_resource type="Material" uid="uid://cu7gkd8bsqn0b" path="res://data/voxel_blocks/blocks_material.tres" id="1_h4qrj"]
+[ext_resource type="Material" uid="uid://cu7gkd8bsqn0b" path="res://data/voxel_library/blocks_material.tres" id="1_h4qrj"]
 
 [sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_6otl2"]
 

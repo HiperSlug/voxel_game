@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dgkc1gptb4rm1"]
 
-[ext_resource type="Script" uid="uid://r1swcbu2h3pe" path="res://terrain/generator/generator.gd" id="1_0xm2m"]
-[ext_resource type="VoxelBlockyTypeLibrary" uid="uid://bj6utmjyjnqfe" path="res://data/voxel_blocks/blocks_library.tres" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://r1swcbu2h3pe" path="res://terrain/generator.gd" id="1_0xm2m"]
+[ext_resource type="VoxelBlockyTypeLibrary" uid="uid://bj6utmjyjnqfe" path="res://data/voxel_library/blocks_library.tres" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://0kiw5xirry5e" path="res://main/voxel_terrain.gd" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://u02jnx426ebj" path="res://player/player.tscn" id="3_h2yge"]
 [ext_resource type="Resource" uid="uid://bsqt8d4sswrbm" path="res://data/group_block.tres" id="4_7mycd"]
@@ -15,7 +15,6 @@ pass_1_extent = 1
 script = ExtResource("1_0xm2m")
 noise = SubResource("FastNoiseLite_0xm2m")
 noise_amplitude = 10
-blocks_library = ExtResource("1_ig7tw")
 metadata/_custom_type_script = "uid://r1swcbu2h3pe"
 
 [sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_7mycd"]
@@ -41,3 +40,5 @@ collision_layer = 2
 
 [node name="ItemHandler" type="Node3D" parent="."]
 script = ExtResource("5_lquwl")
+
+[node name="VFX" type="Node3D" parent="." groups=["vfx"]]

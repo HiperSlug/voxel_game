@@ -4,7 +4,7 @@ class_name Block
 @export var name: StringName
 @export var drop: Drop
 
-func get_block_index() -> BlockIndex:
+func get_block_index() -> BlockIndexer:
 	return IndexHandler.get_block_index(name)
 
 func get_drops() -> Array[Item]:
