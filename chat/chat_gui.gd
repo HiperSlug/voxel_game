@@ -13,6 +13,9 @@ signal done_chatting()
 var chatting: bool = false
 var can_submit: bool = true
 
+func _ready() -> void:
+	hide()
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("chat"):
 		can_submit = true
@@ -21,7 +24,6 @@ func _input(event: InputEvent) -> void:
 	
 	elif event.is_action_pressed("cmd") and not chatting:
 		enter_chat()
-		chat_input.text = "/"
 	
 	if not chat_input.has_focus():
 		return
@@ -50,6 +52,7 @@ var chat_message_index: int = 0
 
 func _on_chat_input_text_submitted(message: String) -> void:
 	if not can_submit:
+		can_submit = true
 		return
 	
 	if message == "":
@@ -63,8 +66,15 @@ func _on_chat_input_text_submitted(message: String) -> void:
 		exit_chat()
 		return
 	
-	push_message(message)
 	
+	if next_msg_cmd_response:
+		next_msg_cmd_response = false
+		cmd_parser.receive_response(message)
+		exit_chat()
+		return
+	
+	
+	push_message(message)
 	exit_chat()
 
 func exit_chat() -> void:
@@ -74,6 +84,7 @@ func exit_chat() -> void:
 	done_chatting.emit()
 	chat_message_index = 0
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	hide()
 
 func enter_chat() -> void:
 	can_submit = false
@@ -83,13 +94,26 @@ func enter_chat() -> void:
 	start_chatting.emit()
 	chat_message_index = 0
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	show()
 
 func push_message(message: String) -> void:
-	var label: Label = chat_message_scene.instantiate()
-	label.text = message
-	chat_container.add_child(label)
-
+	create_message_label(message)
 
 func system_message(message: String) -> void:
 	var wrapped_message: String = "sys: {0}".format([message])
 	push_message(wrapped_message)
+
+func cmd_message(message: String, wrap_message: bool = true) -> void:
+	if wrap_message:
+		message = "cmd: {0}".format([message])
+	push_message(message)
+
+func create_message_label(message: String = "") -> Label:
+	var label: Label = chat_message_scene.instantiate()
+	label.text = message
+	chat_container.add_child(label)
+	return label
+
+var next_msg_cmd_response: bool = false
+func cmd_expects_response() -> void:
+	next_msg_cmd_response = true

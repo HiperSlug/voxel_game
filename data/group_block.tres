@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_optit")
 sort_property = &"name"
+resources = Array[Resource]([])
 do_recursion = true
 base_folder = "res://data/block"
 includes = Array[String](["*.tres"])

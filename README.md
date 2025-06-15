@@ -1,2 +1,1 @@
-# voxel_game
-# AHHHHHH
+# Voxel Game

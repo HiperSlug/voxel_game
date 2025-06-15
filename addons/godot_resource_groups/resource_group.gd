@@ -7,24 +7,24 @@ extends Resource
 
 
 ## The base folder for locating files in this resource group.
-@export_dir var base_folder:String = ""
+@export_dir var base_folder: String = ""
 ## Files that should be included. Can contain ant-style wildcards:
 ## ** - matches zero or more characters (including "/")
 ## * - matches zero or more characters (excluding "/")
 ## ? - matches one character
-@export var includes:Array[String] = []
+@export var includes: Array[String] = []
 
 ## Files which should be excluded. Is applied after the include filter.
 ## Can also contain ant-style wildcards.
-@export var excludes:Array[String] = []
+@export var excludes: Array[String] = []
 
 ## The paths of the project that match this resource group.
-@export var paths:Array[String] = []
+@export var paths: Array[String] = []
 
 
 ## Loads all resources in this resource group and returns them.
 func load_all() -> Array[Resource]:
-	var result:Array[Resource] = []
+	var result: Array[Resource] = []
 	load_all_into(result)
 	return result
 	
@@ -33,19 +33,19 @@ func load_all() -> Array[Resource]:
 ## the item is not of the required type, an error will be printed and 
 ## the item is skipped.
 func load_all_into(destination:Array):
-	for path in paths:
+	for path: String in paths:
 		destination.append(load(path))
 
 ## Gets all paths of resources inside of this resource group that
 ## match the given include and exclude criteria
-func get_matching_paths(includes:Array[String], excludes:Array[String]) -> Array[String]:
+func get_matching_paths(includes: Array[String], excludes: Array[String]) -> Array[String]:
 	var path_verifier = PathVerifier.new(base_folder, includes, excludes)
-	return paths.filter(func(it): return path_verifier.matches(it))
+	return paths.filter(func(path): return path_verifier.matches(path)) # returns an array of booleans weather each thing matched
 
 ## Loads all resources in this resource group that match the given
 ## include and exclude criteria
-func load_matching(includes:Array[String], excludes:Array[String]) -> Array[Resource]:
-	var result:Array[Resource] = []
+func load_matching(includes: Array[String], excludes: Array[String]) -> Array[Resource]:
+	var result: Array[Resource] = []
 	load_matching_into(result, includes, excludes)
 	return result
 	
@@ -65,14 +65,14 @@ func load_matching_into(destination:Array, includes:Array[String], excludes:Arra
 ## a ResourceGroupBackgroundLoader object which can be used to check the
 ## status and collect the results. Will call the on_resource_loaded callable for each
 ## loaded resource.
-func load_all_in_background(on_resource_loaded:Callable) -> ResourceGroupBackgroundLoader:
+func load_all_in_background(on_resource_loaded: Callable) -> ResourceGroupBackgroundLoader:
 	return ResourceGroupBackgroundLoader.new(paths, on_resource_loaded)
 
 ## Loads all resources in this resource group that match the given
 ## include and exclude criteria in background. ResourceGroupBackgroundLoader object which can be used to check the
 ## status and collect the results. Will call the on_resource_loaded callable for each
 ## loaded resource.
-func load_matching_in_background(includes:Array[String], excludes:Array[String], on_resource_loaded:Callable) \
+func load_matching_in_background(includes: Array[String], excludes: Array[String], on_resource_loaded: Callable) \
 		-> ResourceGroupBackgroundLoader:
 	return ResourceGroupBackgroundLoader.new(get_matching_paths(includes, excludes), on_resource_loaded)
 	

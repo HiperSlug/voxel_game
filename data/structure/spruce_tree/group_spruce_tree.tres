@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LookupGroup" load_steps=2 format=3 uid="uid://c3nv6md64ekna"]
+
+[ext_resource type="Script" uid="uid://djxxqy4kdipif" path="res://addons/lookup_group.gd" id="1_xecoq"]
+
+[resource]
+script = ExtResource("1_xecoq")
+sort_property = &""
+resources = Array[Resource]([])
+do_recursion = false
+base_folder = "res://data/structure/spruce_tree"
+includes = Array[String](["*.tres"])
+excludes = Array[String](["group_spruce_tree.tres"])
+paths = Array[String](["res://data/structure/spruce_tree/spruce_tree_0.tres"])

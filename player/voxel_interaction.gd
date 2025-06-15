@@ -4,7 +4,30 @@ class_name VoxelInteraction
 @export var crosshair_raycast: RayCast3D
 @export var inventory: Inventory
 @export var inventory_gui: InventoryGUI
-@onready var voxel_terrain: MinecraftTerrain = get_tree().get_first_node_in_group("voxel_terrain")
+@onready var voxel_tool: VoxelTool = get_tree().get_first_node_in_group("voxel_terrain").get_voxel_tool()
+@onready var item_handler: ItemHandler = get_tree().get_first_node_in_group("item_handler")
+
+func _ready() -> void:
+	voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
+
+func get_pointed_voxel_position() -> Vector3i:
+	if crosshair_raycast.is_colliding():
+		var collision_point: Vector3 = crosshair_raycast.get_collision_point()
+		collision_point -= crosshair_raycast.get_collision_normal() * .5
+		var voxel_position: Vector3i = Vector3i(floor(collision_point))
+		return voxel_position
+	else:
+		var length: float = -crosshair_raycast.target_position.z
+		var direction: Vector3 = -crosshair_raycast.global_basis.z
+		var position: Vector3 = length * direction
+		var voxel_position: Vector3i = Vector3i(floor(position))
+		return voxel_position
+
+func get_pointed_voxel() -> StringName:
+	var position: Vector3i = get_pointed_voxel_position()
+	var model_index: int = voxel_tool.get_voxel(position)
+	var block_name: StringName = Block.get_name_from_index(model_index)
+	return block_name
 
 
 func try_remove_pointed() -> void:
@@ -18,7 +41,7 @@ func try_remove_pointed() -> void:
 		var voxel_position: Vector3i = Vector3i(floor(collision_point))
 		
 		# set air
-		voxel_terrain.remove_voxel(voxel_position)
+		remove_voxel(voxel_position)
 
 func try_place_pointed() -> void:
 	
@@ -41,11 +64,14 @@ func try_place_pointed() -> void:
 		if not item is BlockItem:
 			return
 		
-		var block_indexer: BlockIndexer = item.get_block_index()
+		var block_name: StringName = item.block_name
+		if block_name == &"air":
+			print("mine air")
+			return
 		
 		# setting any inital attributes
 		var attributes: Dictionary = {}
-		for attribute: VoxelBlockyAttribute in block_indexer.get_attributes():
+		for attribute: VoxelBlockyAttribute in item.get_block_attributes():
 			if attribute is VoxelBlockyAttributeAxis:
 				
 				match abs(collision_normal):
@@ -81,13 +107,41 @@ func try_place_pointed() -> void:
 		
 		match attributes.size():
 			0:
-				index = block_indexer.get_base_index()
+				index = Block.block_library.get_model_index_default(block_name)
 			1:
-				index = block_indexer.get_index_with_attribute(attributes.values()[0])
+				index = Block.block_library.get_model_index_single_attribute(block_name, attributes.values()[0])
 			_:
-				index = block_indexer.get_index_with_attributes(attributes)
+				index = Block.block_library.get_model_index_with_attributes(block_name, attributes)
 		
 		
 		# place and remove from inventory
 		inventory.remove_amount_from_slot(slot_index, 1)
-		voxel_terrain.add_voxel(voxel_position, index)
+		add_voxel(voxel_position, index)
+
+
+@export var block_group: LookupGroup
+
+var air_index: int = Block.block_library.get_model_index_default(&"air")
+
+func remove_voxel(voxel_position: Vector3i) -> void:
+	
+	var model_index: int = voxel_tool.get_voxel(voxel_position)
+	var block_name: StringName = Block.get_name_from_index(model_index)
+	voxel_tool.set_voxel(voxel_position, air_index)
+	
+	if block_name == &"air":
+		print("remove air")
+		return
+	
+	if block_group.res_key_exists(block_name):
+		var drops: Array[Item] = block_group.get_res_key(block_name).drop._get_drop()
+		
+		for item: Item in drops:
+			var item_position: Vector3 = Vector3(voxel_position) + Vector3(.5, .5, .5)
+			
+			item_handler.add_items(item_position, item)
+			
+	
+
+func add_voxel(voxel_position: Vector3i, type: int) -> void:
+	voxel_tool.set_voxel(voxel_position, type)

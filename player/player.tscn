@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://u02jnx426ebj"]
+[gd_scene load_steps=10 format=3 uid="uid://u02jnx426ebj"]
 
 [ext_resource type="Script" uid="uid://bd8gsky0meamh" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://bvbty2kiytot7" path="res://player/pickup_box.gd" id="2_qjkh3"]
 [ext_resource type="Script" uid="uid://dcmssicw30m0r" path="res://player/voxel_interaction.gd" id="3_g1dw6"]
+[ext_resource type="Resource" uid="uid://bsqt8d4sswrbm" path="res://data/group_block.tres" id="4_boad6"]
 [ext_resource type="Script" uid="uid://b5r02im6iinj5" path="res://inventory/inventory.gd" id="4_yw30f"]
-[ext_resource type="PackedScene" uid="uid://c3bmhrel5r5xl" path="res://inventory/inventory_gui.tscn" id="6_g6k8r"]
+[ext_resource type="PackedScene" uid="uid://c3bmhrel5r5xl" path="res://inventory/hotbar/inventory_gui.tscn" id="6_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://dngghfsfrwc23" path="res://chat/chat_gui.tscn" id="7_boad6"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g6k8r"]
@@ -44,7 +45,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
 [node name="VoxelViewer" type="VoxelViewer" parent="PlayerHead/Camera3D"]
 
 [node name="CrosshairRayCast" type="RayCast3D" parent="PlayerHead"]
-target_position = Vector3(0, 0, -20)
+target_position = Vector3(0, 0, -50)
 collide_with_areas = true
 
 [node name="VoxelInteraction" type="Node" parent="." node_paths=PackedStringArray("crosshair_raycast", "inventory", "inventory_gui")]
@@ -52,6 +53,7 @@ script = ExtResource("3_g1dw6")
 crosshair_raycast = NodePath("../PlayerHead/CrosshairRayCast")
 inventory = NodePath("../Inventory")
 inventory_gui = NodePath("../GUI/InventoryGUI")
+block_group = ExtResource("4_boad6")
 
 [node name="Inventory" type="Node" parent="." groups=["inventory"]]
 script = ExtResource("4_yw30f")
@@ -76,16 +78,14 @@ inventory = NodePath("../../Inventory")
 
 [node name="Control" type="Control" parent="GUI"]
 layout_mode = 3
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -290.0
-offset_right = 274.0
-offset_bottom = 290.0
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="ChatGUI" parent="GUI/Control" instance=ExtResource("7_boad6")]
 layout_mode = 1
+offset_right = 222.0
+offset_bottom = 555.0
 
 [connection signal="done_chatting" from="GUI/Control/ChatGUI" to="." method="_on_chat_gui_done_chatting"]
 [connection signal="start_chatting" from="GUI/Control/ChatGUI" to="." method="_on_chat_gui_start_chatting"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b13i06417kpfj"]
+[gd_scene load_steps=8 format=3 uid="uid://b13i06417kpfj"]
 
 [ext_resource type="Script" uid="uid://b64ffs4qftgfa" path="res://item_3d/item_3d.gd" id="1_3evgq"]
+[ext_resource type="Texture2D" uid="uid://b7uda8m44uald" path="res://assets/atlas/item_atlas.tres" id="2_bjp4d"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_bjp4d"]
 height = 0.7
@@ -80,7 +81,9 @@ shape = SubResource("CylinderShape3D_bjp4d")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+shaded = true
 texture_filter = 0
+texture = ExtResource("2_bjp4d")
 
 [node name="PickupArea" type="Area3D" parent="."]
 collision_layer = 4

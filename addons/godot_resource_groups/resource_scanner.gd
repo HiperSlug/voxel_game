@@ -1,13 +1,10 @@
 @tool
 
-
-const PathVerifier = preload("path_verifier.gd")
-
 ## The resource scanner scans the project for resources matching the given
 ## definition and returns a list of matching resources.
 
 var _group:ResourceGroup
-var _verifier:PathVerifier
+var _verifier: PathVerifier
 var _file_system:EditorFileSystem
 
 ## Ctor.

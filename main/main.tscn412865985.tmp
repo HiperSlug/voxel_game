@@ -1,0 +1,68 @@
+[gd_scene load_steps=14 format=3 uid="uid://dgkc1gptb4rm1"]
+
+[ext_resource type="Script" uid="uid://r1swcbu2h3pe" path="res://terrain/generator.gd" id="1_0xm2m"]
+[ext_resource type="VoxelBlockyTypeLibrary" uid="uid://bj6utmjyjnqfe" path="res://data/voxel_library/blocks_library.tres" id="1_ig7tw"]
+[ext_resource type="Resource" uid="uid://c3nv6md64ekna" path="res://data/structure/spruce_tree/group_spruce_tree.tres" id="2_4dugh"]
+[ext_resource type="Script" uid="uid://0kiw5xirry5e" path="res://main/voxel_terrain.gd" id="3_7mycd"]
+[ext_resource type="PackedScene" uid="uid://u02jnx426ebj" path="res://player/player.tscn" id="3_h2yge"]
+[ext_resource type="Resource" uid="uid://bsqt8d4sswrbm" path="res://data/group_block.tres" id="4_7mycd"]
+[ext_resource type="Script" uid="uid://bms5nd0w3710r" path="res://main/item_handler.gd" id="5_lquwl"]
+[ext_resource type="Shader" uid="uid://dy7b2edqwqtvj" path="res://pixelate_behind.gdshader" id="8_67ri8"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_67ri8"]
+
+[sub_resource type="VoxelGeneratorMultipassCB" id="VoxelGeneratorMultipassCB_4dugh"]
+pass_count = 2
+pass_1_extent = 1
+script = ExtResource("1_0xm2m")
+noise = SubResource("FastNoiseLite_67ri8")
+noise_amplitude = 10
+tree_group = ExtResource("2_4dugh")
+metadata/_custom_type_script = "uid://r1swcbu2h3pe"
+
+[sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_7mycd"]
+library = ExtResource("1_ig7tw")
+
+[sub_resource type="Environment" id="Environment_grrlh"]
+adjustment_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0i4oc"]
+shader = ExtResource("8_67ri8")
+shader_parameter/pixel_size = 1.0
+
+[node name="Main" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.833315, 0.468852, 0.292857, 0.281342, -0.096325, 0.95476, 0.47585, 0.87801, -0.0516386, 0, 0, 0)
+shadow_enabled = true
+
+[node name="VoxelTerrain" type="VoxelTerrain" parent="." node_paths=PackedStringArray("item_handler") groups=["voxel_terrain"]]
+run_stream_in_editor = false
+generator = SubResource("VoxelGeneratorMultipassCB_4dugh")
+mesher = SubResource("VoxelMesherBlocky_7mycd")
+script = ExtResource("3_7mycd")
+block_group = ExtResource("4_7mycd")
+item_handler = NodePath("../ItemHandler")
+
+[node name="Player" parent="." instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.4373, 0)
+collision_layer = 2
+
+[node name="ItemHandler" type="Node3D" parent="."]
+script = ExtResource("5_lquwl")
+
+[node name="FX" type="Node3D" parent="." groups=["fx"]]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_grrlh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_0i4oc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)

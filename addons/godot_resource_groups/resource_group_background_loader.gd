@@ -1,27 +1,27 @@
 class_name ResourceGroupBackgroundLoader
 
-var _open:Array[String] = []
-var _callback:Callable
-var _cancelled:bool = false
-var _total:int = 0
-var _finished:int = 0
+var _open: Array[String] = []
+var _callback: Callable
+var _cancelled: bool = false
+var _total: int = 0
+var _finished: int = 0
 
 
 ## A loaded resource. This will be given as argument
 ## to the callback function
 class ResourceLoadingInfo:
 	## Whether loading of this resource was successful
-	var success:bool
+	var success: bool
 	## The path from which the resource was loaded
-	var path:String
+	var path: String
 	## The loaded resource. Is null when success is false
-	var resource:Resource
+	var resource: Resource
 	## The overall progress of the background loading, can
 	## be used to drive a progress indicator
-	var progress:float
+	var progress: float
 	## Whether this has been the last resource
 	## of the 
-	var last:bool
+	var last: bool
 
 ## Ctor. Takes an array of paths to load.
 func _init(paths:Array[String], callback:Callable):
@@ -53,14 +53,14 @@ func is_done() -> bool:
 	
 ## Looks like call_deferred does not work properly when not in a node
 ## context (it doesn't seem to defer there...), so we roll our own here.
-func _call_deferred(callable:Callable, args:Array = []):
+func _call_deferred(callable: Callable, args:Array = []):
 	await Engine.get_main_loop().process_frame
 	callable.callv(args)
 		
 ## Starts the loading process for the next file in background.	
 func _next():
 	# if we're done or the process was cancelled, stop it here.
-	if _open.is_empty() or _cancelled:
+	if is_done():
 		return
 
 	# fetch the next path and ask the resource loader to load it.
@@ -73,7 +73,7 @@ func _next():
 	_call_deferred(_fetch, [path])	
 
 ## Tries to fetch a file currently being loaded in background.	
-func _fetch(path:String):
+func _fetch(path: String):
 	var status = ResourceLoader.load_threaded_get_status(path)
 	match (status):
 		ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:

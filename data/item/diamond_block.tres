@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BlockItem" load_steps=6 format=3 uid="uid://yic408fuqjk3"]
 
 [ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/item/block_item.gd" id="1_wr768"]
-[ext_resource type="Texture2D" uid="uid://va4atfhced42" path="res://assets/item_sprites.png" id="2_j3jeu"]
+[ext_resource type="Texture2D" uid="uid://va4atfhced42" path="res://assets/new/item_sprites.png" id="2_j3jeu"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t5jcs"]
 load_path = "res://.godot/imported/item_sprites.png-ea9d1a82578d97992467ca9c423662af.ctex"

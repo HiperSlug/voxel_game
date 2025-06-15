@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Block" load_steps=5 format=3 uid="uid://dsj5hd0iii6pu"]
 
-[ext_resource type="Resource" uid="uid://bfh4y2u2ucu66" path="res://data/item/dirt_stone.tres" id="1_l6bit"]
+[ext_resource type="Resource" uid="uid://bfh4y2u2ucu66" path="res://data/item/gravel.tres" id="1_l6bit"]
 [ext_resource type="Script" uid="uid://c3k7kf66drxho" path="res://data/drop/drop_item.gd" id="2_blc5m"]
 [ext_resource type="Script" uid="uid://bjjrrbx8ynb8y" path="res://data/block/block.gd" id="3_w0tuw"]
 
