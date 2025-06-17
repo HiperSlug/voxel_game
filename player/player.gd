@@ -123,9 +123,9 @@ func _input(event: InputEvent) -> void:
 		inventory_gui.last_slot()
 		return
 	
-	elif event.is_action_pressed("pick_block"):
-		var sel_voxel: Vector3i = voxel_interaction.get_selected_voxel()
-		print("pick_block at", sel_voxel)
+	#elif event.is_action_pressed("pick_block"):
+		#var sel_voxel: Vector3i = voxel_interaction.get_selected_voxel()
+		#print("pick_block at", sel_voxel)
 	
 	for i: int in range(10):
 		

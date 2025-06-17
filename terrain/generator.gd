@@ -25,9 +25,9 @@ class_name MyGenerator
 var tree_to_buffer_dict: Dictionary = {}
 
 var blocks: LookupGroup = preload("res://data/group_block.tres")
-var dirt_index: int = Block.block_library.get_model_index_default(&"dirt")
-var grass_index: int = Block.block_library.get_model_index_default(&"grass")
-var air_index: int = Block.block_library.get_model_index_default(&"air")
+#var dirt_index: int = Block.block_library.get_model_index_default(&"dirt")
+#var grass_index: int = Block.block_library.get_model_index_default(&"grass")
+#var air_index: int = Block.block_library.get_model_index_default(&"air")
 
 # chat gpt function. I didnt want to write it myself.
 func rotate_voxel_buffer_y_90(og_buffer: VoxelBuffer) -> VoxelBuffer:
@@ -81,15 +81,15 @@ func _generate_pass(voxel_tool: VoxelToolMultipassGenerator, pass_index: int):
 					
 					if y < terrain_height:
 						
-						voxel_tool.set_voxel(position, dirt_index) 
+						voxel_tool.set_voxel(position, 0) 
 						
 					elif y == terrain_height:
 						
-						voxel_tool.set_voxel(position, grass_index) 
+						voxel_tool.set_voxel(position, 0) 
 						
 					else:
 						
-						voxel_tool.set_voxel(position, air_index) 
+						voxel_tool.set_voxel(position, 0) 
 	
 	elif pass_index == 1:
 		
@@ -151,6 +151,6 @@ func get_aabb_overlap(aabb: AABB, voxel_tool: VoxelToolMultipassGenerator) -> bo
 				var pos: Vector3i = Vector3i(_x, _y, _z)
 				
 				var voxel_index: int = voxel_tool.get_voxel(pos)
-				if not voxel_index == air_index:
+				if not voxel_index == 0:
 					return true
 	return false

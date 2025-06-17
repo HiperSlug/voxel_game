@@ -3,7 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://dyris0drjjqku" path="res://assets/new/blocks.png" id="1_jbhqh"]
 
 [resource]
-transparency = 4
+transparency = 2
+alpha_scissor_threshold = 0.001
+alpha_antialiasing_mode = 0
+cull_mode = 2
 depth_draw_mode = 1
 albedo_texture = ExtResource("1_jbhqh")
 texture_filter = 0

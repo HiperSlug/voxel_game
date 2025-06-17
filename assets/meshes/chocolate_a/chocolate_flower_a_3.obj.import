@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ndomyvsrdsq1"
+path="res://.godot/imported/chocolate_flower_a_3.obj-16fb33744c7a9eea68f8657995e293fe.mesh"
+
+[deps]
+
+files=["res://.godot/imported/chocolate_flower_a_3.obj-16fb33744c7a9eea68f8657995e293fe.mesh"]
+
+source_file="res://assets/meshes/chocolate_a/chocolate_flower_a_3.obj"
+dest_files=["res://.godot/imported/chocolate_flower_a_3.obj-16fb33744c7a9eea68f8657995e293fe.mesh", "res://.godot/imported/chocolate_flower_a_3.obj-16fb33744c7a9eea68f8657995e293fe.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

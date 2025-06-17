@@ -5,7 +5,7 @@ class_name CreativeItemSlot
 @onready var texture_rect: TextureRect = $TextureRect
 
 func _ready() -> void:
-	texture_rect.texture = item.multi_texture
+	texture_rect.texture = item.single_texture
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	set_drag_preview(texture_rect.duplicate())

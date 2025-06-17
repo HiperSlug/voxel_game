@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://djnnu03csdvav"
+path="res://.godot/imported/chocolate_flower_b_2.obj-970fb7e6b3e859f8b42c1d706b4cf7ef.mesh"
+
+[deps]
+
+files=["res://.godot/imported/chocolate_flower_b_2.obj-970fb7e6b3e859f8b42c1d706b4cf7ef.mesh"]
+
+source_file="res://assets/meshes/chocolate_b/chocolate_flower_b_2.obj"
+dest_files=["res://.godot/imported/chocolate_flower_b_2.obj-970fb7e6b3e859f8b42c1d706b4cf7ef.mesh", "res://.godot/imported/chocolate_flower_b_2.obj-970fb7e6b3e859f8b42c1d706b4cf7ef.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

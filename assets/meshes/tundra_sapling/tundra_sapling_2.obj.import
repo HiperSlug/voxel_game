@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cgj4qelifpcwo"
+path="res://.godot/imported/tundra_sapling_2.obj-25fd35efc0fdb8ec2730fb383c5078fa.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tundra_sapling_2.obj-25fd35efc0fdb8ec2730fb383c5078fa.mesh"]
+
+source_file="res://assets/meshes/tundra_sapling/tundra_sapling_2.obj"
+dest_files=["res://.godot/imported/tundra_sapling_2.obj-25fd35efc0fdb8ec2730fb383c5078fa.mesh", "res://.godot/imported/tundra_sapling_2.obj-25fd35efc0fdb8ec2730fb383c5078fa.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

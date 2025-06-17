@@ -1,7 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://dgkc1gptb4rm1"]
+[gd_scene load_steps=9 format=3 uid="uid://dgkc1gptb4rm1"]
 
 [ext_resource type="Script" uid="uid://r1swcbu2h3pe" path="res://terrain/generator.gd" id="1_0xm2m"]
-[ext_resource type="VoxelBlockyTypeLibrary" uid="uid://bj6utmjyjnqfe" path="res://data/voxel_library/blocks_library.tres" id="1_ig7tw"]
 [ext_resource type="Resource" uid="uid://c3nv6md64ekna" path="res://data/structure/spruce_tree/group_spruce_tree.tres" id="2_4dugh"]
 [ext_resource type="Script" uid="uid://0kiw5xirry5e" path="res://main/voxel_terrain.gd" id="3_7mycd"]
 [ext_resource type="PackedScene" uid="uid://u02jnx426ebj" path="res://player/player.tscn" id="3_h2yge"]
@@ -18,9 +17,6 @@ noise_amplitude = 10
 tree_group = ExtResource("2_4dugh")
 metadata/_custom_type_script = "uid://r1swcbu2h3pe"
 
-[sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_7mycd"]
-library = ExtResource("1_ig7tw")
-
 [sub_resource type="Environment" id="Environment_grrlh"]
 adjustment_enabled = true
 
@@ -33,7 +29,6 @@ shadow_enabled = true
 [node name="VoxelTerrain" type="VoxelTerrain" parent="." groups=["voxel_terrain"]]
 run_stream_in_editor = false
 generator = SubResource("VoxelGeneratorMultipassCB_4dugh")
-mesher = SubResource("VoxelMesherBlocky_7mycd")
 script = ExtResource("3_7mycd")
 
 [node name="Player" parent="." instance=ExtResource("3_h2yge")]
