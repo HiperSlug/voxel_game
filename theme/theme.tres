@@ -4,6 +4,7 @@
 [ext_resource type="StyleBox" uid="uid://dirgfcypve8f2" path="res://theme/inventory_slot/inventory_slot_selected.tres" id="2_nrt0f"]
 
 [resource]
+BlockSelectButton/base_type = &"Button"
 InventorySlot/base_type = &"PanelContainer"
 InventorySlot/styles/panel = ExtResource("1_8ab6e")
 SelInventorySlot/base_type = &"PanelContainer"

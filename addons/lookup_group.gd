@@ -1,5 +1,5 @@
 extends RecursiveGroup
-class_name LookupGroup
+class_name LookupGroup2
 
 
 ### EXTENSION TO RESOURCE GROUPS BUILT BY ME ###

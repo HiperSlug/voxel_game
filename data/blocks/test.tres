@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="BlockLibrary" load_steps=6 format=3 uid="uid://bqurv0du7rtu7"]
+
+[ext_resource type="Script" uid="uid://cwnti6otmbvux" path="res://data/blocks/block.gd" id="1_5j2ik"]
+[ext_resource type="Script" uid="uid://ceuub748kskuj" path="res://data/blocks/block_library.gd" id="2_ixqal"]
+
+[sub_resource type="Resource" id="Resource_5j2ik"]
+script = ExtResource("1_5j2ik")
+name = &""
+mode = 0
+metadata/_custom_type_script = "uid://cwnti6otmbvux"
+
+[sub_resource type="Resource" id="Resource_ixqal"]
+script = ExtResource("1_5j2ik")
+name = &""
+mode = 0
+metadata/_custom_type_script = "uid://cwnti6otmbvux"
+
+[sub_resource type="Resource" id="Resource_a50y3"]
+script = ExtResource("1_5j2ik")
+name = &""
+mode = 0
+metadata/_custom_type_script = "uid://cwnti6otmbvux"
+
+[resource]
+script = ExtResource("2_ixqal")
+blocks = Array[ExtResource("1_5j2ik")]([SubResource("Resource_5j2ik"), SubResource("Resource_ixqal"), SubResource("Resource_a50y3")])
+_blocks = Dictionary[StringName, ExtResource("1_5j2ik")]({})
+metadata/_custom_type_script = "uid://ceuub748kskuj"

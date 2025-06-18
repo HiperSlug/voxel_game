@@ -1,14 +1,20 @@
-[gd_scene load_steps=15 format=3 uid="uid://dgkc1gptb4rm1"]
+[gd_scene load_steps=18 format=3 uid="uid://dgkc1gptb4rm1"]
 
 [ext_resource type="Script" uid="uid://r1swcbu2h3pe" path="res://terrain/generator.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://c0e7pr7i7r5us" path="res://gui/block_select/block_select_button.tscn" id="1_4dugh"]
 [ext_resource type="Script" uid="uid://lbxai0uw3hwb" path="res://main/editor.gd" id="1_bsumw"]
 [ext_resource type="Texture2D" uid="uid://b7uda8m44uald" path="res://assets/atlas/item_atlas.tres" id="1_c651c"]
 [ext_resource type="Script" uid="uid://3abda7jshtgg" path="res://gui/block_select/block_selection.gd" id="1_grrlh"]
 [ext_resource type="Resource" uid="uid://coldxoisjrsta" path="res://data/blocks/block_library.tres" id="2_0i4oc"]
+[ext_resource type="Texture2D" uid="uid://va4atfhced42" path="res://assets/new/item_sprites.png" id="2_3wy1v"]
 [ext_resource type="VoxelBlockyLibrary" uid="uid://d2viacf10n221" path="res://data/blocks/voxel_library.tres" id="3_c651c"]
 [ext_resource type="PackedScene" uid="uid://u02jnx426ebj" path="res://player/player.tscn" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://npb3ujg43u8c" path="res://gui/block_display/sub_type_selection.gd" id="5_0i4oc"]
 [ext_resource type="Texture2D" uid="uid://ctkmsmmj71u4f" path="res://assets/new/tools.png" id="6_kfbq2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfbq2"]
+atlas = ExtResource("2_3wy1v")
+region = Rect2(48, 48, 48, 48)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xwkvk"]
 
@@ -69,8 +75,71 @@ layout_mode = 2
 [node name="BlockSelection" type="TabContainer" parent="Editor/HBoxContainer/HSplitContainer/VSplitContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+current_tab = 0
 script = ExtResource("1_grrlh")
 block_lib = ExtResource("2_0i4oc")
+
+[node name="Desert" type="PanelContainer" parent="Editor/HBoxContainer/HSplitContainer/VSplitContainer/BlockSelection"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"InventorySlot"
+metadata/_tab_index = 0
+
+[node name="GridContainer" type="HFlowContainer" parent="Editor/HBoxContainer/HSplitContainer/VSplitContainer/BlockSelection/Desert"]
+layout_mode = 2
+
+[node name="BlockSelectButton" parent="Editor/HBoxContainer/HSplitContainer/VSplitContainer/BlockSelection/Desert/GridContainer" instance=ExtResource("1_4dugh")]
+layout_mode = 2
+
+[node name="Desert2" type="PanelContainer" parent="Editor/HBoxContainer/HSplitContainer/VSplitContainer/BlockSelection"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"InventorySlot"
+metadata/_tab_index = 1
+
+[node name="GridContainer" type="HFlowContainer" parent="Editor/HBoxContainer/HSplitContainer/VSplitContainer/BlockSelection/Desert2"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Editor/HBoxContainer/HSplitContainer/VSplitContainer/BlockSelection/Desert2/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_kfbq2")
+
+[node name="TextureRect2" type="TextureRect" parent="Editor/HBoxContainer/HSplitContainer/VSplitContainer/BlockSelection/Desert2/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_kfbq2")
+
+[node name="TextureRect3" type="TextureRect" parent="Editor/HBoxContainer/HSplitContainer/VSplitContainer/BlockSelection/Desert2/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_kfbq2")
+
+[node name="TextureRect4" type="TextureRect" parent="Editor/HBoxContainer/HSplitContainer/VSplitContainer/BlockSelection/Desert2/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_kfbq2")
+
+[node name="TextureRect5" type="TextureRect" parent="Editor/HBoxContainer/HSplitContainer/VSplitContainer/BlockSelection/Desert2/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_kfbq2")
+
+[node name="TextureRect6" type="TextureRect" parent="Editor/HBoxContainer/HSplitContainer/VSplitContainer/BlockSelection/Desert2/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_kfbq2")
+
+[node name="TextureRect7" type="TextureRect" parent="Editor/HBoxContainer/HSplitContainer/VSplitContainer/BlockSelection/Desert2/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_kfbq2")
+
+[node name="TextureRect8" type="TextureRect" parent="Editor/HBoxContainer/HSplitContainer/VSplitContainer/BlockSelection/Desert2/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_kfbq2")
+
+[node name="TextureRect9" type="TextureRect" parent="Editor/HBoxContainer/HSplitContainer/VSplitContainer/BlockSelection/Desert2/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_kfbq2")
+
+[node name="TextureRect10" type="TextureRect" parent="Editor/HBoxContainer/HSplitContainer/VSplitContainer/BlockSelection/Desert2/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_kfbq2")
 
 [node name="BlockDisplay" type="PanelContainer" parent="Editor/HBoxContainer/HSplitContainer/VSplitContainer"]
 layout_mode = 2

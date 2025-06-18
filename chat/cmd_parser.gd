@@ -3,7 +3,7 @@ class_name CMDParser
 
 
 @export var chat: ChatGUI
-@export var structures: LookupGroup
+@export var structures: LookupGroup2
 @onready var voxel_tool: VoxelTool = get_tree().get_first_node_in_group("voxel_terrain").get_voxel_tool()
 var saved_positions: Dictionary = {}
 
@@ -268,7 +268,7 @@ func get_index_from_list(message: String, options: Array):
 		
 		return index
 
-var item_group: LookupGroup = preload("res://data/group_item.tres")
+#var item_group: LookupGroup2 = preload("res://data/group_item.tres")
 func get_item(arguments: PackedStringArray) -> void:
 	if arguments.size() != 3:
 		chat.cmd_message("invalid arguments:
@@ -278,19 +278,19 @@ func get_item(arguments: PackedStringArray) -> void:
 	var parsed_name: String = arguments[1]
 	parsed_name = parsed_name.capitalize()
 	
-	var item = item_group.get_res_key(parsed_name)
-	if item == null:
-		chat.cmd_message("invalid name: {0}".format([parsed_name]))
-		return
+	#var item = item_group.get_res_key(parsed_name)
+	#if item == null:
+		#chat.cmd_message("invalid name: {0}".format([parsed_name]))
+		#return
+	#
+	#if not arguments[2].is_valid_int():
+		#chat.cmd_message("invalid amount: {0}".format([arguments[2]]))
+		#return
+	#
+	#var amount: int = arguments[2].to_int()
 	
-	if not arguments[2].is_valid_int():
-		chat.cmd_message("invalid amount: {0}".format([arguments[2]]))
-		return
-	
-	var amount: int = arguments[2].to_int()
-	
-	var inventory: Inventory = get_tree().get_first_node_in_group("inventory")
-	inventory.add_items(item, amount)
+	#var inventory: Inventory = get_tree().get_first_node_in_group("inventory")
+	#inventory.add_items(item, amount)
 
 
 func load_structure(arguments: PackedStringArray) -> void:
@@ -307,7 +307,7 @@ func load_structure(arguments: PackedStringArray) -> void:
 	var structure_group = structures.get_res_key(file_path)
 	if structure_group == null:
 		chat.cmd_message("invalid structure: {0}".format([file_name]))
-	structure_group = structure_group as LookupGroup
+	structure_group = structure_group as LookupGroup2
 	
 	
 	var structure_names: Array = structure_group.get_res_arr().map(func (res): return res.name)
@@ -436,7 +436,7 @@ func save_structure(arguments: PackedStringArray) -> void:
 		var lookup_group_name: String = "group_{0}".format([file_name])
 		var lookup_group_path: String = "{0}/{1}.tres".format([folder_path, lookup_group_name])
 		
-		var lookup_group: LookupGroup = LookupGroup.new()
+		var lookup_group: LookupGroup2 = LookupGroup2.new()
 		lookup_group.includes.append("*.tres")
 		lookup_group.excludes.append("{0}.tres".format([lookup_group_name]))
 		lookup_group.base_folder = folder_path

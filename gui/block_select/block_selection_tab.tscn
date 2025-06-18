@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0cbodt20xaa7"]
+
+[ext_resource type="Script" uid="uid://dobof4xu0xwmu" path="res://gui/block_select/block_selection_tab.gd" id="1_8rpws"]
+
+[node name="BlockSelectionTab" type="PanelContainer" node_paths=PackedStringArray("grid_container")]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_type_variation = &"InventorySlot"
+script = ExtResource("1_8rpws")
+grid_container = NodePath("GridContainer")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2

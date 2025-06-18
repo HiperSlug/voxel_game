@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="LookupGroup" load_steps=2 format=3 uid="uid://bg2730ymvyns4"]
+[gd_resource type="Resource" script_class="LookupGroup2" load_steps=2 format=3 uid="uid://bg2730ymvyns4"]
 
 [ext_resource type="Script" uid="uid://djxxqy4kdipif" path="res://addons/lookup_group.gd" id="1_b1xcj"]
 

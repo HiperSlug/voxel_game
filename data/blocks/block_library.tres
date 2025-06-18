@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="BlockLibrary" load_steps=9 format=3 uid="uid://coldxoisjrsta"]
+
+[ext_resource type="Script" uid="uid://cwnti6otmbvux" path="res://data/blocks/block.gd" id="1_k3u8q"]
+[ext_resource type="Texture2D" uid="uid://fa8mwqddxkvq" path="res://assets/new/items.png" id="2_i422f"]
+[ext_resource type="Script" uid="uid://ceuub748kskuj" path="res://data/blocks/block_library.gd" id="2_k3u8q"]
+[ext_resource type="VoxelBlockyLibrary" uid="uid://d2viacf10n221" path="res://data/blocks/voxel_library.tres" id="3_k3u8q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gkyyh"]
+atlas = ExtResource("2_i422f")
+region = Rect2(48, 192, 48, 48)
+
+[sub_resource type="Resource" id="Resource_q8t60"]
+resource_name = "dirt"
+script = ExtResource("1_k3u8q")
+name = &"dirt"
+editor_group = &"nature"
+texture = SubResource("AtlasTexture_gkyyh")
+mode = 0
+index = 86
+metadata/_custom_type_script = "uid://cwnti6otmbvux"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aim62"]
+atlas = ExtResource("2_i422f")
+region = Rect2(0, 192, 48, 48)
+
+[sub_resource type="Resource" id="Resource_4mmmh"]
+resource_name = "grassed_dirt"
+script = ExtResource("1_k3u8q")
+name = &"grassed_dirt"
+editor_group = &"nature"
+texture = SubResource("AtlasTexture_aim62")
+mode = 0
+index = 5
+metadata/_custom_type_script = "uid://cwnti6otmbvux"
+
+[resource]
+script = ExtResource("2_k3u8q")
+blocks = Array[ExtResource("1_k3u8q")]([SubResource("Resource_q8t60"), SubResource("Resource_4mmmh")])
+voxel_library = ExtResource("3_k3u8q")
+metadata/_custom_type_script = "uid://ceuub748kskuj"

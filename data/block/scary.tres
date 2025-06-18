@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="Block" load_steps=2 format=3 uid="uid://bkkt86k1vr6pu"]
-
-[ext_resource type="Script" uid="uid://bjjrrbx8ynb8y" path="res://data/block/block.gd" id="1_f3ny4"]
-
-[resource]
-script = ExtResource("1_f3ny4")
-name = &"scary"
-metadata/_custom_type_script = "uid://bjjrrbx8ynb8y"

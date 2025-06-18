@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0e7pr7i7r5us"]
+
+[ext_resource type="Script" uid="uid://bvu6umb44whub" path="res://gui/block_select/block_select_button.gd" id="3_8blmk"]
+[ext_resource type="Texture2D" uid="uid://cmame37vhptli" path="res://assets/new/atlas/items.tres" id="4_8blmk"]
+
+[node name="BlockSelectButton" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"BlockSelectButton"
+icon = ExtResource("4_8blmk")
+icon_alignment = 1
+script = ExtResource("3_8blmk")
