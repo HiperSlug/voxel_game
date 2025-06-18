@@ -15,10 +15,6 @@ run/main_scene="uid://dgkc1gptb4rm1"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
-[autoload]
-
-Globals="*res://globals/globals.gd"
-
 [display]
 
 window/stretch/mode="viewport"
@@ -41,6 +37,7 @@ auto_rebuild=true
 
 [gui]
 
+timers/tooltip_delay_sec=0.0
 theme/custom="uid://dq7bwsqfbymet"
 
 [importer_defaults]

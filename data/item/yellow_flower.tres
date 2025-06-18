@@ -1,11 +1,7 @@
-[gd_resource type="Resource" script_class="BlockItem" load_steps=5 format=3 uid="uid://mmp07d46lxt3"]
+[gd_resource type="Resource" script_class="BlockItem" load_steps=4 format=3 uid="uid://mmp07d46lxt3"]
 
 [ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/item/block_item.gd" id="1_78dxm"]
 [ext_resource type="Texture2D" uid="uid://fa8mwqddxkvq" path="res://assets/new/items.png" id="1_d7l4s"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f8jue"]
-atlas = ExtResource("1_d7l4s")
-region = Rect2(96, 144, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rqmtv"]
 atlas = ExtResource("1_d7l4s")
@@ -16,6 +12,6 @@ script = ExtResource("1_78dxm")
 block_name = &"yellow_flower"
 name = "Yellow Flower"
 single_texture = SubResource("AtlasTexture_rqmtv")
-multi_texture = SubResource("AtlasTexture_f8jue")
 stack_size = 999
+category = &"Foliage"
 metadata/_custom_type_script = "uid://crsy4y4oa5e1m"

@@ -1,169 +1,161 @@
 extends Node
 class_name VoxelInteraction
 
-@export var crosshair_raycast: RayCast3D
-@export var inventory: Inventory
+@export var head: Marker3D
 @export var inventory_gui: InventoryGUI
 @onready var voxel_tool: VoxelTool = get_tree().get_first_node_in_group("voxel_terrain").get_voxel_tool()
-@onready var item_handler: ItemHandler = get_tree().get_first_node_in_group("item_handler")
+var block_library: BlockLibrary = preload("res://data/blocks/block_library.tres")
+
+const relative_vectors: Array[Vector3i] = [
+	Vector3i.UP,
+	Vector3i.DOWN,
+	Vector3i.FORWARD,
+	Vector3i.BACK,
+	Vector3i.LEFT,
+	Vector3i.RIGHT,
+]
+
 
 func _ready() -> void:
 	voxel_tool.channel = VoxelBuffer.CHANNEL_TYPE
 
-func get_pointed_voxel_position() -> Vector3i:
-	if crosshair_raycast.is_colliding():
-		var collision_point: Vector3 = crosshair_raycast.get_collision_point()
-		collision_point -= crosshair_raycast.get_collision_normal() * .5
-		var voxel_position: Vector3i = Vector3i(floor(collision_point))
-		return voxel_position
-	else:
-		var length: float = -crosshair_raycast.target_position.z
-		var direction: Vector3 = -crosshair_raycast.global_basis.z
-		var position: Vector3 = length * direction
-		var voxel_position: Vector3i = Vector3i(floor(position))
-		return voxel_position
-
-#func get_pointed_voxel() -> StringName:
-	#var position: Vector3i = get_pointed_voxel_position()
-	#var model_index: int = voxel_tool.get_voxel(position)
-	#var block_name: StringName = Block.get_name_from_index(model_index)
-	#return block_name
-
+var last_temporary_mesh: TemporaryMesh
+func _process(_delta: float) -> void:
+	if last_temporary_mesh:
+		last_temporary_mesh.queue_free()
+	
+	var voxel_raycast_result = voxel_tool.raycast(head.global_position, -head.global_basis.z, 50, 1 << 4)
+	if voxel_raycast_result == null:
+		return
+	
+	
+	
+	last_temporary_mesh = TemporaryMesh.create_aabb_mesh(voxel_raycast_result.position, voxel_raycast_result.position)
+	var fx_node: Node = get_tree().get_first_node_in_group("fx")
+	fx_node.add_child(last_temporary_mesh)
+	
 
 func try_remove_pointed() -> void:
+	var voxel_raycast_result = voxel_tool.raycast(head.global_position, -head.global_basis.z, 50, 1 << 4)
+	if voxel_raycast_result == null:
+		return
+	voxel_raycast_result = voxel_raycast_result as VoxelRaycastResult
 	
-	# if colliding
-	if crosshair_raycast.is_colliding():
-		
-		var collision_point: Vector3 = crosshair_raycast.get_collision_point()
-		collision_point -= crosshair_raycast.get_collision_normal() * .5
-		
-		var _voxel_position: Vector3i = Vector3i(floor(collision_point))
-		
-		# set air
-		#remove_voxel(voxel_position)
+	var voxel_position: Vector3i = voxel_raycast_result.position
+	voxel_tool.set_voxel(voxel_position, 0)
+	
+	for vector in relative_vectors:
+		var update_position: Vector3i = voxel_position + vector
+		block_update(update_position)
 
 func try_place_pointed() -> void:
+	var voxel_raycast_result = voxel_tool.raycast(head.global_position, -head.global_basis.z, 50, 1 << 4)
+	if voxel_raycast_result == null:
+		return
+	voxel_raycast_result = voxel_raycast_result as VoxelRaycastResult
 	
-	if crosshair_raycast.is_colliding():
+	# has an item
+	var slot: InventorySlotGUI = inventory_gui.get_selected_slot()
+	if slot.item == null:
+		return
+	
+	# is a block
+	if not slot.item is BlockItem:
+		return
+	
+	var voxel_position: Vector3i = voxel_raycast_result.previous_position
+	
+	var block: Block = block_library.get_block_s(slot.item.block_name)
+	if block.mode == Block.MODE.BIOME:
+		var biome := MyGenerator.get_biome(voxel_position)
+		match biome:
+			MyGenerator.BIOME.PLAINS:
+				block = block.multi_blocks[0]
+			MyGenerator.BIOME.TUNDRA:
+				block = block.multi_blocks[1]
+	
+	if block.mode == Block.MODE.MULTI:
+		var replaced_voxel_index: int = voxel_tool.get_voxel(voxel_raycast_result.position)
 		
-		# get voxel position.
-		var collision_point: Vector3 = crosshair_raycast.get_collision_point()
-		var collision_normal: Vector3 = crosshair_raycast.get_collision_normal()
-		collision_point += collision_normal * .5
+		var replaced: bool = false
+		for i: int in range(block.multi_blocks.size()):
+			if replaced_voxel_index in block.multi_blocks[i].all_indices():
+				var next_index: int = i + 1
+				if next_index >= block.multi_blocks.size():
+					next_index = 0
+				block = block.multi_blocks[next_index]
+				voxel_position = voxel_raycast_result.position
+				replaced = true
+				break
 		
-		var voxel_position: Vector3i = Vector3i(floor(collision_point))
-		
-		# has an item
-		var slot_index: int = inventory_gui.selected_hotbar_slot
-		if inventory.is_slot_empty(slot_index):
-			return
-		
-		# is a block
-		var item: Item = inventory.inventory_slots[slot_index].item
-		if not item is BlockItem:
-			return
-		
-		var block_name: StringName = item.block_name
-		if block_name == &"air":
-			print("mine air")
-			return
-		
-		# setting any inital attributes
-		var attributes: Dictionary = {}
-		for attribute: VoxelBlockyAttribute in item.get_block_attributes():
-			if attribute is VoxelBlockyAttributeAxis:
-				
-				match abs(collision_normal):
-					Vector3.FORWARD:
-						attributes["axis"] = VoxelBlockyAttributeAxis.AXIS_Z
+		if not replaced:
+			block = block.multi_blocks[0]
+	
+	
+	match block.support_type:
+		Block.SUPPORT.BOTTOM:
+			var position_beneath: Vector3i = voxel_position + Vector3i.DOWN
+			var voxel_beneath: int = voxel_tool.get_voxel(position_beneath)
+			
+			if not block_library.get_block_i(voxel_beneath).can_support:
+				return
+			
+		Block.SUPPORT.BOTTOM_OR_SIDES:
+			pass
+	
+	
+	
+	
+	var index: int = 0
+	match block.mode:
+			Block.MODE.SINGLE:
+				index = block.index
+			Block.MODE.AXIS: 
+				match voxel_raycast_result.normal.abs():
+					Vector3.BACK:
+						index = block.index_z
 					Vector3.UP:
-						attributes["axis"] = VoxelBlockyAttributeAxis.AXIS_Y
+						index = block.index_y
 					Vector3.RIGHT:
-						attributes["axis"] = VoxelBlockyAttributeAxis.AXIS_X
-				
-			elif attribute is VoxelBlockyAttributeDirection:
-				if not attribute.horizontal_only:
-					
-					match collision_normal:
-						Vector3.FORWARD:
-							attributes["axis"] = VoxelBlockyAttributeDirection.DIR_NEGATIVE_Z
-						Vector3.UP:
-							attributes["axis"] = VoxelBlockyAttributeDirection.DIR_POSITIVE_Y
-						Vector3.RIGHT:
-							attributes["axis"] = VoxelBlockyAttributeDirection.DIR_POSITIVE_X
-						Vector3.BACK:
-							attributes["axis"] = VoxelBlockyAttributeDirection.DIR_POSITIVE_Z
-						Vector3.DOWN:
-							attributes["axis"] = VoxelBlockyAttributeDirection.DIR_NEGATIVE_Y
-						Vector3.LEFT:
-							attributes["axis"] = VoxelBlockyAttributeDirection.DIR_NEGATIVE_X
-				
-				else:
-					var dir: Vector3 = collision_point.direction_to(crosshair_raycast.global_position)
-					dir.y = 0
-					dir = dir.normalized()
-					#print(dir)
-					if abs(dir.x) > abs(dir.z):
-						if dir.x > 0:
-							attributes["axis"] = VoxelBlockyAttributeDirection.DIR_NEGATIVE_X
-							#print("negx")
-						else:
-							attributes["axis"] = VoxelBlockyAttributeDirection.DIR_POSITIVE_X
-							#print("posx")
+						index = block.index_x
+					_:
+						index = block.index_y
+			Block.MODE.HORIZONTAL_DIRECTION:
+				var backward := head.global_basis.z
+				if abs(backward.x) > abs(backward.z):
+					if backward.x > 0:
+						index = block.index_pos_x
 					else:
-						if dir.z > 0:
-							attributes["axis"] = VoxelBlockyAttributeDirection.DIR_NEGATIVE_Z
-							#print("negz")
-						else:
-							attributes["axis"] = VoxelBlockyAttributeDirection.DIR_POSITIVE_Z
-							#print("posz")
-					
-				
-			elif attribute is VoxelBlockyAttributeRotation:
-				printerr("No rotation handling")
-		
-		
-		# get index
-		var index: int
-		#
-		#match attributes.size():
-			#0:
-				#index = Block.block_library.get_model_index_default(block_name)
-			#1:
-				#index = Block.block_library.get_model_index_single_attribute(block_name, attributes.values()[0])
-			#_:
-				#index = Block.block_library.get_model_index_with_attributes(block_name, attributes)
-		#
-		
-		# place and remove from inventory
-		inventory.remove_amount_from_slot(slot_index, 1)
-		add_voxel(voxel_position, index)
-
-
-@export var block_group: LookupGroup
-
-#var air_index: int = Block.block_library.get_model_index_default(&"air")
-#
-#func remove_voxel(voxel_position: Vector3i) -> void:
-	#
-	#var model_index: int = voxel_tool.get_voxel(voxel_position)
-	#var block_name: StringName = Block.get_name_from_index(model_index)
-	#voxel_tool.set_voxel(voxel_position, air_index)
-	#
-	#if block_name == &"air":
-		#print("remove air")
-		#return
-	#
-	#if block_group.res_key_exists(block_name):
-		#var drops: Array[Item] = block_group.get_res_key(block_name).drop._get_drop()
-		#
-		#for item: Item in drops:
-			#var item_position: Vector3 = Vector3(voxel_position) + Vector3(.5, .5, .5)
-			#
-			#item_handler.add_items(item_position, item)
-			#
+						index = block.index_neg_x
+				else: # abs(backward.x) < abs(backward.z)
+					if backward.z > 0:
+						index = block.index_neg_z
+					else:
+						index = block.index_pos_z
 	
+	
+	voxel_tool.set_voxel(voxel_position, index)
+	for vector in relative_vectors:
+		var update_position: Vector3i = voxel_position + vector
+		block_update(update_position)
 
-func add_voxel(voxel_position: Vector3i, type: int) -> void:
-	voxel_tool.set_voxel(voxel_position, type)
+
+func block_update(position: Vector3i) -> void:
+	var voxel: int = voxel_tool.get_voxel(position)
+	if voxel == 0:
+		return
+	
+	var block: Block = block_library.get_block_i(voxel)
+	
+	match block.support_type:
+		Block.SUPPORT.BOTTOM:
+			var position_beneath: Vector3i = position + Vector3i.DOWN
+			var voxel_beneath: int = voxel_tool.get_voxel(position_beneath)
+			if voxel_beneath == 0:
+				voxel_tool.set_voxel(position, 0)
+				return
+			
+			if not block_library.get_block_i(voxel_beneath).can_support:
+				voxel_tool.set_voxel(position, 0)
+		Block.SUPPORT.BOTTOM_OR_SIDES:
+			pass

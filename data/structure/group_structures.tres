@@ -10,5 +10,5 @@ do_recursion = true
 base_folder = "res://data/structure"
 includes = Array[String](["group*.tres"])
 excludes = Array[String](["group_structures.tres"])
-paths = Array[String](["res://data/structure/spruce_tree/group_spruce_tree.tres", "res://data/structure/test/group_test.tres"])
+paths = Array[String](["res://data/structure/spruce_tree/group_spruce_tree.tres", "res://data/structure/tree_plains/group_tree_plains.tres", "res://data/structure/tree_tundra/group_tree_tundra.tres"])
 metadata/_custom_type_script = "uid://djxxqy4kdipif"

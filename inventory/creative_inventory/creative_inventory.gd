@@ -2,13 +2,23 @@ extends Control
 class_name CreativeInventory
 
 @export var item_group: LookupGroup
-var creative_item_slot_scene: PackedScene = preload("res://inventory/creative_inventory/creative_item_slot.tscn")
-@onready var grid_container: GridContainer = $GridContainer
+const GROUP_ITEM = preload("res://data/group_item.tres")
+@export var section_container: Container
+const INVENTORY_SECTION = preload("res://inventory/creative_inventory/inventory_section.tscn")
 
+var group_to_section: Dictionary[StringName, PanelContainer] = {}
 func _ready() -> void:
-	var items: Array[Resource] = item_group.get_res_arr()
+	var items: Array[Resource] = GROUP_ITEM.get_res_arr()
 	
-	for item in items:
-		var slot: CreativeItemSlot = creative_item_slot_scene.instantiate()
-		slot.item = item
-		grid_container.add_child(slot)
+	for item: Item in items:
+		var section = group_to_section.get(item.category, null)
+		if section != null:
+			section = section as Section
+			section.add_item_slot(item)
+			continue
+		
+		section = INVENTORY_SECTION.instantiate()
+		section.set_section_name(item.category)
+		section.add_item_slot(item)
+		group_to_section[item.category] = section
+		section_container.add_child(section)

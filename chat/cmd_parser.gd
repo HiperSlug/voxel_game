@@ -31,8 +31,6 @@ func parse_cmd(cmd: String) -> void:
 			load_structure(arguments)
 		"get":
 			get_variables(arguments)
-		"item":
-			get_item(arguments)
 		_:
 			chat.cmd_message("
 				/save name key_1 key_2 -> saves a structure between two positions
@@ -127,37 +125,7 @@ func get_player_voxel_position() -> Vector3i:
 	var voxel_position: Vector3i = Vector3i(player_position.floor())
 	return voxel_position
 
-func create_aabb_mesh(corner_1: Vector3, corner_2: Vector3) -> TemporaryMesh:
-	var aabb := get_aabb(corner_1, corner_2)
-	
-	# mesh
-	var mesh := ArrayMesh.new()
-	
-	var arrays: Array = []
-	arrays.resize(ArrayMesh.ARRAY_MAX)
-	
-	var vertices: PackedVector3Array = []
-	for index: int in range(8):
-		vertices.append(aabb.get_endpoint(index))
-	
-	# chatgpt made this array for me.
-	var indices: PackedInt32Array = PackedInt32Array([
-	0, 1, 1, 3, 3, 2, 2, 0,
-	4, 5, 5, 7, 7, 6, 6, 4,
-	0, 4, 1, 5, 2, 6, 3, 7
-	])
-	
-	arrays[ArrayMesh.ARRAY_VERTEX] = vertices
-	arrays[ArrayMesh.ARRAY_INDEX] = indices
-	
-	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_LINES, arrays)
-	
-	var mesh_instance: TemporaryMesh = temporary_mesh_scene.instantiate()
-	mesh_instance.mesh = mesh
-	
-	var fx_node: Node = get_tree().get_first_node_in_group("fx")
-	fx_node.add_child(mesh_instance)
-	return mesh_instance
+
 
 func get_yes_no(message: String):
 	while true:
@@ -268,29 +236,6 @@ func get_index_from_list(message: String, options: Array):
 		
 		return index
 
-var item_group: LookupGroup = preload("res://data/group_item.tres")
-func get_item(arguments: PackedStringArray) -> void:
-	if arguments.size() != 3:
-		chat.cmd_message("invalid arguments:
-			/item name amount")
-		return
-	
-	var parsed_name: String = arguments[1]
-	parsed_name = parsed_name.capitalize()
-	
-	var item = item_group.get_res_key(parsed_name)
-	if item == null:
-		chat.cmd_message("invalid name: {0}".format([parsed_name]))
-		return
-	
-	if not arguments[2].is_valid_int():
-		chat.cmd_message("invalid amount: {0}".format([arguments[2]]))
-		return
-	
-	var amount: int = arguments[2].to_int()
-	
-	var inventory: Inventory = get_tree().get_first_node_in_group("inventory")
-	inventory.add_items(item, amount)
 
 
 func load_structure(arguments: PackedStringArray) -> void:
@@ -472,3 +417,34 @@ func save_structure(arguments: PackedStringArray) -> void:
 	structures.get_res_key(folder_path).reload()
 	
 	chat.cmd_message("saved to {0}".format([path]))
+func create_aabb_mesh(corner_1: Vector3, corner_2: Vector3) -> TemporaryMesh:
+	var aabb := get_aabb(corner_1, corner_2)
+	
+	# mesh
+	var mesh := ArrayMesh.new()
+	
+	var arrays: Array = []
+	arrays.resize(ArrayMesh.ARRAY_MAX)
+	
+	var vertices: PackedVector3Array = []
+	for index: int in range(8):
+		vertices.append(aabb.get_endpoint(index))
+	
+	# chatgpt made this array for me.
+	var indices: PackedInt32Array = PackedInt32Array([
+	0, 1, 1, 3, 3, 2, 2, 0,
+	4, 5, 5, 7, 7, 6, 6, 4,
+	0, 4, 1, 5, 2, 6, 3, 7
+	])
+	
+	arrays[ArrayMesh.ARRAY_VERTEX] = vertices
+	arrays[ArrayMesh.ARRAY_INDEX] = indices
+	
+	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_LINES, arrays)
+	
+	var mesh_instance: TemporaryMesh = temporary_mesh_scene.instantiate()
+	mesh_instance.mesh = mesh
+	
+	var fx_node: Node = get_tree().get_first_node_in_group("fx")
+	fx_node.add_child(mesh_instance)
+	return mesh_instance

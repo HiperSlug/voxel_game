@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BlockItem" load_steps=4 format=3 uid="uid://buanppytqlot1"]
+
+[ext_resource type="Texture2D" uid="uid://fa8mwqddxkvq" path="res://assets/new/items.png" id="1_hoex8"]
+[ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/item/block_item.gd" id="2_wgxiv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xu4j"]
+atlas = ExtResource("1_hoex8")
+region = Rect2(48, 48, 48, 48)
+
+[resource]
+script = ExtResource("2_wgxiv")
+block_name = &"iron_ore"
+name = "Iron Ore"
+single_texture = SubResource("AtlasTexture_3xu4j")
+stack_size = 999
+category = &"Rock"
+metadata/_custom_type_script = "uid://crsy4y4oa5e1m"

@@ -1,11 +1,7 @@
-[gd_resource type="Resource" script_class="BlockItem" load_steps=5 format=3 uid="uid://bog4kl26xcjpd"]
+[gd_resource type="Resource" script_class="BlockItem" load_steps=4 format=3 uid="uid://bog4kl26xcjpd"]
 
 [ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/item/block_item.gd" id="1_l8d85"]
 [ext_resource type="Texture2D" uid="uid://fa8mwqddxkvq" path="res://assets/new/items.png" id="1_yogh1"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_67r3x"]
-atlas = ExtResource("1_yogh1")
-region = Rect2(96, 384, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7r625"]
 atlas = ExtResource("1_yogh1")
@@ -16,6 +12,6 @@ script = ExtResource("1_l8d85")
 block_name = &"mushroom_cap"
 name = "Mushroom Cap"
 single_texture = SubResource("AtlasTexture_7r625")
-multi_texture = SubResource("AtlasTexture_67r3x")
 stack_size = 999
+category = &"Natural"
 metadata/_custom_type_script = "uid://crsy4y4oa5e1m"

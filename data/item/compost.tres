@@ -1,21 +1,17 @@
-[gd_resource type="Resource" script_class="BlockItem" load_steps=5 format=3 uid="uid://3v8tomkvy2rg"]
+[gd_resource type="Resource" script_class="BlockItem" load_steps=4 format=3 uid="uid://3v8tomkvy2rg"]
 
 [ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/item/block_item.gd" id="1_1wg5n"]
-[ext_resource type="Texture2D" uid="uid://va4atfhced42" path="res://assets/new/item_sprites.png" id="1_dmfae"]
+[ext_resource type="Texture2D" uid="uid://fa8mwqddxkvq" path="res://assets/new/items.png" id="1_l7tk6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lfm8a"]
-atlas = ExtResource("1_dmfae")
-region = Rect2(144, 240, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n4tb4"]
-atlas = ExtResource("1_dmfae")
-region = Rect2(96, 240, 48, 48)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrmhp"]
+atlas = ExtResource("1_l7tk6")
+region = Rect2(48, 240, 48, 48)
 
 [resource]
 script = ExtResource("1_1wg5n")
 block_name = &"compost"
 name = "Compost"
-single_texture = SubResource("AtlasTexture_n4tb4")
-multi_texture = SubResource("AtlasTexture_lfm8a")
+single_texture = SubResource("AtlasTexture_rrmhp")
 stack_size = 999
+category = &"Natural"
 metadata/_custom_type_script = "uid://crsy4y4oa5e1m"

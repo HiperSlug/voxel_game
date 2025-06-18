@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://chd5ifuo6igsn"]
+
+[ext_resource type="Script" uid="uid://d1vvf3ut0cmvd" path="res://inventory/creative_inventory/inventory_section.gd" id="1_budi4"]
+
+[node name="Section" type="PanelContainer" node_paths=PackedStringArray("section_title", "item_container")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MelonContainer"
+script = ExtResource("1_budi4")
+section_title = NodePath("VBoxContainer/SectionTitle")
+item_container = NodePath("VBoxContainer/HFlowContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="SectionTitle" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "CONSUMABLES"
+
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer"]
+layout_mode = 2

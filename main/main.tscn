@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgkc1gptb4rm1"]
+[gd_scene load_steps=10 format=3 uid="uid://dgkc1gptb4rm1"]
 
 [ext_resource type="Script" uid="uid://r1swcbu2h3pe" path="res://terrain/generator.gd" id="1_0xm2m"]
-[ext_resource type="Resource" uid="uid://c3nv6md64ekna" path="res://data/structure/spruce_tree/group_spruce_tree.tres" id="2_4dugh"]
-[ext_resource type="Script" uid="uid://0kiw5xirry5e" path="res://main/voxel_terrain.gd" id="3_7mycd"]
+[ext_resource type="Resource" uid="uid://btxjis00dasqd" path="res://data/structure/tree_plains/group_tree_plains.tres" id="1_3wy1v"]
+[ext_resource type="Resource" uid="uid://bm22s3hgtiqgi" path="res://data/structure/tree_tundra/group_tree_tundra.tres" id="3_4dugh"]
 [ext_resource type="PackedScene" uid="uid://u02jnx426ebj" path="res://player/player.tscn" id="3_h2yge"]
-[ext_resource type="Script" uid="uid://bms5nd0w3710r" path="res://main/item_handler.gd" id="5_lquwl"]
+[ext_resource type="VoxelBlockyLibrary" uid="uid://d2viacf10n221" path="res://data/blocks/voxel_library.tres" id="3_kfbq2"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_67ri8"]
 
@@ -14,8 +14,12 @@ pass_1_extent = 1
 script = ExtResource("1_0xm2m")
 noise = SubResource("FastNoiseLite_67ri8")
 noise_amplitude = 10
-tree_group = ExtResource("2_4dugh")
+plains_tree_group = ExtResource("1_3wy1v")
+tundra_tree_group = ExtResource("3_4dugh")
 metadata/_custom_type_script = "uid://r1swcbu2h3pe"
+
+[sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_4dugh"]
+library = ExtResource("3_kfbq2")
 
 [sub_resource type="Environment" id="Environment_grrlh"]
 adjustment_enabled = true
@@ -23,20 +27,17 @@ adjustment_enabled = true
 [node name="Main" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.805091, -0.573037, -0.153159, 0.0290187, -0.295956, 0.95476, -0.592441, 0.764226, 0.2549, 0, 0, 0)
+transform = Transform3D(0.812273, 0.346822, 0.468967, -0.5, -6.88148e-07, 0.866025, 0.300356, -0.93793, 0.17341, -0.548073, 0, 0)
 shadow_enabled = true
 
 [node name="VoxelTerrain" type="VoxelTerrain" parent="." groups=["voxel_terrain"]]
 run_stream_in_editor = false
 generator = SubResource("VoxelGeneratorMultipassCB_4dugh")
-script = ExtResource("3_7mycd")
+mesher = SubResource("VoxelMesherBlocky_4dugh")
 
 [node name="Player" parent="." instance=ExtResource("3_h2yge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.4373, 0)
 collision_layer = 2
-
-[node name="ItemHandler" type="Node3D" parent="." groups=["item_handler"]]
-script = ExtResource("5_lquwl")
 
 [node name="FX" type="Node3D" parent="." groups=["fx"]]
 

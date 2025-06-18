@@ -12,25 +12,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mmryn")
-hotbar = NodePath("Hotbar")
+hotbar = NodePath("PanelContainer/Hotbar")
 
 [node name="CreativeInventory" parent="." instance=ExtResource("3_ayk7x")]
 layout_mode = 1
-offset_left = -576.0
-offset_top = -284.5
-offset_right = 576.0
-offset_bottom = 284.5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -291.0
+offset_top = -166.0
+offset_right = 291.0
+offset_bottom = 167.0
 size_flags_vertical = 3
+item_group = null
 
-[node name="Hotbar" parent="." instance=ExtResource("2_ayk7x")]
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -295.0
+offset_top = -89.0
+offset_right = 295.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"PumpkinContainer"
+
+[node name="Hotbar" parent="PanelContainer" instance=ExtResource("2_ayk7x")]
 layout_mode = 2
-anchors_preset = 0
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 286.0
-offset_top = 574.0
-offset_right = 866.0
-offset_bottom = 633.0
 size_flags_horizontal = 4

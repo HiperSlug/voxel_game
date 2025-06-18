@@ -1,0 +1,944 @@
+[gd_resource type="VoxelBlockyLibrary" load_steps=123 format=3 uid="uid://d2viacf10n221"]
+
+[ext_resource type="Material" uid="uid://yr43mf02863k" path="res://data/blocks/opaque.tres" id="1_6g035"]
+[ext_resource type="Material" uid="uid://blro3kgg2ffuv" path="res://data/blocks/transparent.tres" id="2_xai7l"]
+[ext_resource type="ArrayMesh" uid="uid://0hd3vbujha3f" path="res://assets/meshes/orange_flower/orange_flower_3.obj" id="3_xevws"]
+[ext_resource type="ArrayMesh" uid="uid://bf1d4acmb06cq" path="res://assets/meshes/orange_flower/orange_flower_2.obj" id="4_fs5lr"]
+[ext_resource type="ArrayMesh" uid="uid://dg3trqoo0eotw" path="res://assets/meshes/orange_flower/orange_flower_1.obj" id="5_rpy4a"]
+[ext_resource type="ArrayMesh" uid="uid://4hce4ia2181" path="res://assets/meshes/orange_flower/orange_flower_0.obj" id="6_ctvbi"]
+[ext_resource type="ArrayMesh" uid="uid://ckku3stw1uodf" path="res://assets/meshes/yellow_flower/yellow_flower_3.obj" id="7_7itvp"]
+[ext_resource type="ArrayMesh" uid="uid://cxdrgcpsds1jw" path="res://assets/meshes/plains_sapling/plains_sapling_3.obj" id="8_lornc"]
+[ext_resource type="ArrayMesh" uid="uid://e445gty67rwd" path="res://assets/meshes/plains_sapling/plains_sapling_2.obj" id="9_ukqov"]
+[ext_resource type="ArrayMesh" uid="uid://ba2n1mvpirlly" path="res://assets/meshes/plains_sapling/plains_sapling_1.obj" id="10_ppydk"]
+[ext_resource type="ArrayMesh" uid="uid://dld2kkf8dkvhi" path="res://assets/meshes/plains_sapling/plains_sapling_0.obj" id="11_5s8uf"]
+[ext_resource type="ArrayMesh" uid="uid://bbkocdcxvpuee" path="res://assets/meshes/tundra_sapling/tundra_sapling_3.obj" id="12_a36rl"]
+[ext_resource type="ArrayMesh" uid="uid://cgj4qelifpcwo" path="res://assets/meshes/tundra_sapling/tundra_sapling_2.obj" id="13_khcat"]
+[ext_resource type="ArrayMesh" uid="uid://c1qfw3jstdnew" path="res://assets/meshes/tundra_sapling/tundra_sapling_1.obj" id="14_twekg"]
+[ext_resource type="ArrayMesh" uid="uid://dnkc8li4euuhd" path="res://assets/meshes/tundra_sapling/tundra_sapling_0.obj" id="15_o8tvr"]
+[ext_resource type="ArrayMesh" uid="uid://bk8iy7doqo4cw" path="res://assets/meshes/red_mushroom/red_mushroom_3.obj" id="16_hgn67"]
+[ext_resource type="ArrayMesh" uid="uid://bcixppavdg2p1" path="res://assets/meshes/red_mushroom/red_mushroom_2.obj" id="17_mvwv7"]
+[ext_resource type="ArrayMesh" uid="uid://ycttxytixwl3" path="res://assets/meshes/red_mushroom/red_mushroom_1.obj" id="18_l3gpk"]
+[ext_resource type="ArrayMesh" uid="uid://0adx4w41utm4" path="res://assets/meshes/red_mushroom/red_mushroom_0.obj" id="19_2tcq6"]
+[ext_resource type="ArrayMesh" uid="uid://ndomyvsrdsq1" path="res://assets/meshes/chocolate_a/chocolate_flower_a_3.obj" id="20_fi2qe"]
+[ext_resource type="ArrayMesh" uid="uid://cwslwqfr3witg" path="res://assets/meshes/chocolate_a/chocolate_flower_a_2.obj" id="21_cdwfc"]
+[ext_resource type="ArrayMesh" uid="uid://dokjxoc1sxhvy" path="res://assets/meshes/chocolate_a/chocolate_flower_a_1.obj" id="22_5htor"]
+[ext_resource type="ArrayMesh" uid="uid://bpayobiwqqy08" path="res://assets/meshes/chocolate_a/chocolate_flower_a_0.obj" id="23_u8yhl"]
+[ext_resource type="ArrayMesh" uid="uid://dlnj3ui0e6515" path="res://assets/meshes/chocolate_b/chocolate_flower_b_3.obj" id="24_pfgqo"]
+[ext_resource type="ArrayMesh" uid="uid://djnnu03csdvav" path="res://assets/meshes/chocolate_b/chocolate_flower_b_2.obj" id="25_3ls2s"]
+[ext_resource type="ArrayMesh" uid="uid://bjawt15unh2u0" path="res://assets/meshes/chocolate_b/chocolate_flower_b_1.obj" id="26_hjrhc"]
+[ext_resource type="ArrayMesh" uid="uid://c5h6meb8gegd5" path="res://assets/meshes/chocolate_b/chocolate_flower_b_0.obj" id="27_wbayu"]
+[ext_resource type="ArrayMesh" uid="uid://5o3n6iymd4ca" path="res://assets/meshes/grass/grass_3.obj" id="28_esilv"]
+[ext_resource type="ArrayMesh" uid="uid://b3aooh5th67qe" path="res://assets/meshes/grass/grass_2.obj" id="29_tsg1h"]
+[ext_resource type="ArrayMesh" uid="uid://dn5bk7aexmvi7" path="res://assets/meshes/grass/grass_1.obj" id="30_10q7h"]
+[ext_resource type="ArrayMesh" uid="uid://f3ceomn2e1mw" path="res://assets/meshes/grass/grass_0.obj" id="31_kqsot"]
+[ext_resource type="ArrayMesh" uid="uid://br101ls0j4t2y" path="res://assets/meshes/plains_grass/plains_grass_3.obj" id="32_2mjh1"]
+[ext_resource type="ArrayMesh" uid="uid://mwxnwv52stwq" path="res://assets/meshes/plains_grass/plains_grass_2.obj" id="33_mx1db"]
+[ext_resource type="ArrayMesh" uid="uid://c4pwbq43tbxjw" path="res://assets/meshes/plains_grass/plains_grass_1.obj" id="34_x3rxm"]
+[ext_resource type="ArrayMesh" uid="uid://cjvla33l2lvkj" path="res://assets/meshes/plains_grass/plains_grass_0.obj" id="35_koql4"]
+
+[sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_f568l"]
+resource_name = "air"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_1qs81"]
+atlas_size_in_tiles = Vector2i(20, 10)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "iron_ore"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_j4i36"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(2, 0)
+tile_right = Vector2i(2, 0)
+tile_bottom = Vector2i(1, 0)
+tile_top = Vector2i(1, 0)
+tile_back = Vector2i(2, 0)
+tile_front = Vector2i(2, 0)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "log_y"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_8jnep"]
+atlas_size_in_tiles = Vector2i(20, 10)
+mesh_ortho_rotation_index = 4
+tile_left = Vector2i(2, 0)
+tile_right = Vector2i(2, 0)
+tile_bottom = Vector2i(1, 0)
+tile_top = Vector2i(1, 0)
+tile_back = Vector2i(2, 0)
+tile_front = Vector2i(2, 0)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "log_z"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_mh33j"]
+atlas_size_in_tiles = Vector2i(20, 10)
+mesh_ortho_rotation_index = 1
+tile_left = Vector2i(2, 0)
+tile_right = Vector2i(2, 0)
+tile_bottom = Vector2i(1, 0)
+tile_top = Vector2i(1, 0)
+tile_back = Vector2i(2, 0)
+tile_front = Vector2i(2, 0)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "log_x"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_qqv56"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(1, 1)
+tile_right = Vector2i(1, 1)
+tile_bottom = Vector2i(2, 1)
+tile_top = Vector2i(0, 1)
+tile_back = Vector2i(1, 1)
+tile_front = Vector2i(1, 1)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "grass_plains"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_wfd4g"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(6, 1)
+tile_right = Vector2i(6, 1)
+tile_bottom = Vector2i(2, 1)
+tile_top = Vector2i(6, 0)
+tile_back = Vector2i(6, 1)
+tile_front = Vector2i(6, 1)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "grass_tundra"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_774qq"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(3, 0)
+tile_right = Vector2i(3, 0)
+tile_bottom = Vector2i(3, 0)
+tile_top = Vector2i(3, 0)
+tile_back = Vector2i(3, 0)
+tile_front = Vector2i(3, 0)
+transparency_index = 1
+collision_mask = 17
+material_override_0 = ExtResource("2_xai7l")
+resource_name = "leaves_plains"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_qafuy"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(6, 2)
+tile_right = Vector2i(6, 2)
+tile_bottom = Vector2i(6, 2)
+tile_top = Vector2i(6, 2)
+tile_back = Vector2i(6, 2)
+tile_front = Vector2i(6, 2)
+transparency_index = 1
+collision_mask = 17
+material_override_0 = ExtResource("2_xai7l")
+resource_name = "leaves_tundra"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_3e8yp"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(4, 0)
+tile_right = Vector2i(4, 0)
+tile_bottom = Vector2i(4, 0)
+tile_top = Vector2i(4, 0)
+tile_back = Vector2i(4, 0)
+tile_front = Vector2i(4, 0)
+transparency_index = 2
+collision_mask = 17
+material_override_0 = ExtResource("2_xai7l")
+resource_name = "glass"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_5j308"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(5, 1)
+tile_right = Vector2i(5, 1)
+tile_bottom = Vector2i(5, 2)
+tile_top = Vector2i(5, 2)
+tile_back = Vector2i(5, 1)
+tile_front = Vector2i(5, 0)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "pumpkin_-z"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_km2wl"]
+atlas_size_in_tiles = Vector2i(20, 10)
+mesh_ortho_rotation_index = 10
+tile_left = Vector2i(5, 1)
+tile_right = Vector2i(5, 1)
+tile_bottom = Vector2i(5, 2)
+tile_top = Vector2i(5, 2)
+tile_back = Vector2i(5, 1)
+tile_front = Vector2i(5, 0)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "pumpkin_+z"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_5wqc5"]
+atlas_size_in_tiles = Vector2i(20, 10)
+mesh_ortho_rotation_index = 16
+tile_left = Vector2i(5, 1)
+tile_right = Vector2i(5, 1)
+tile_bottom = Vector2i(5, 2)
+tile_top = Vector2i(5, 2)
+tile_back = Vector2i(5, 1)
+tile_front = Vector2i(5, 0)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "pumpkin_-x"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_5j6r0"]
+atlas_size_in_tiles = Vector2i(20, 10)
+mesh_ortho_rotation_index = 22
+tile_left = Vector2i(5, 1)
+tile_right = Vector2i(5, 1)
+tile_bottom = Vector2i(5, 2)
+tile_top = Vector2i(5, 2)
+tile_back = Vector2i(5, 1)
+tile_front = Vector2i(5, 0)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "pumpkin_+x"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_c8jeg"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(7, 1)
+tile_right = Vector2i(7, 1)
+tile_bottom = Vector2i(7, 2)
+tile_top = Vector2i(7, 2)
+tile_back = Vector2i(7, 1)
+tile_front = Vector2i(7, 0)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "melon_-z"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_d1nii"]
+atlas_size_in_tiles = Vector2i(20, 10)
+mesh_ortho_rotation_index = 10
+tile_left = Vector2i(7, 1)
+tile_right = Vector2i(7, 1)
+tile_bottom = Vector2i(7, 2)
+tile_top = Vector2i(7, 2)
+tile_back = Vector2i(7, 1)
+tile_front = Vector2i(7, 0)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "melon_+z"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_4y8e7"]
+atlas_size_in_tiles = Vector2i(20, 10)
+mesh_ortho_rotation_index = 16
+tile_left = Vector2i(7, 1)
+tile_right = Vector2i(7, 1)
+tile_bottom = Vector2i(7, 2)
+tile_top = Vector2i(7, 2)
+tile_back = Vector2i(7, 1)
+tile_front = Vector2i(7, 0)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "melon_-x"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_baftu"]
+atlas_size_in_tiles = Vector2i(20, 10)
+mesh_ortho_rotation_index = 22
+tile_left = Vector2i(7, 1)
+tile_right = Vector2i(7, 1)
+tile_bottom = Vector2i(7, 2)
+tile_top = Vector2i(7, 2)
+tile_back = Vector2i(7, 1)
+tile_front = Vector2i(7, 0)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "melon_+x"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_0ows1"]
+atlas_size_in_tiles = Vector2i(20, 10)
+mesh_ortho_rotation_index = 22
+tile_left = Vector2i(8, 0)
+tile_right = Vector2i(8, 0)
+tile_bottom = Vector2i(8, 0)
+tile_top = Vector2i(8, 0)
+tile_back = Vector2i(8, 0)
+tile_front = Vector2i(8, 0)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "scary"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_gyqfe"]
+atlas_size_in_tiles = Vector2i(20, 10)
+mesh_ortho_rotation_index = 22
+tile_left = Vector2i(4, 1)
+tile_right = Vector2i(4, 1)
+tile_bottom = Vector2i(4, 1)
+tile_top = Vector2i(4, 1)
+tile_back = Vector2i(4, 1)
+tile_front = Vector2i(4, 1)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "ice"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_ajit0"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(8, 1)
+tile_right = Vector2i(8, 1)
+tile_bottom = Vector2i(8, 1)
+tile_top = Vector2i(8, 1)
+tile_back = Vector2i(8, 1)
+tile_front = Vector2i(8, 1)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "blue_cobblestone"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_2rjai"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(0, 2)
+tile_right = Vector2i(0, 2)
+tile_bottom = Vector2i(0, 2)
+tile_top = Vector2i(0, 2)
+tile_back = Vector2i(0, 2)
+tile_front = Vector2i(0, 2)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "gravel"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_f568l"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(1, 2)
+tile_right = Vector2i(1, 2)
+tile_bottom = Vector2i(0, 2)
+tile_top = Vector2i(0, 2)
+tile_back = Vector2i(1, 2)
+tile_front = Vector2i(1, 2)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "amethyst"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_26nf4"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(2, 2)
+tile_right = Vector2i(2, 2)
+tile_bottom = Vector2i(2, 2)
+tile_top = Vector2i(2, 2)
+tile_back = Vector2i(2, 2)
+tile_front = Vector2i(2, 2)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "diamond_block"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_u1jtf"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(3, 2)
+tile_right = Vector2i(3, 2)
+tile_bottom = Vector2i(3, 2)
+tile_top = Vector2i(3, 2)
+tile_back = Vector2i(3, 2)
+tile_front = Vector2i(3, 2)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "sponge"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_71mq6"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(4, 2)
+tile_right = Vector2i(4, 2)
+tile_bottom = Vector2i(4, 2)
+tile_top = Vector2i(4, 2)
+tile_back = Vector2i(4, 2)
+tile_front = Vector2i(4, 2)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "slate"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_tyjrx"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(8, 2)
+tile_right = Vector2i(8, 2)
+tile_bottom = Vector2i(8, 2)
+tile_top = Vector2i(8, 2)
+tile_back = Vector2i(8, 2)
+tile_front = Vector2i(8, 2)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "wood_planks"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_mwhws"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(0, 3)
+tile_right = Vector2i(0, 3)
+tile_bottom = Vector2i(0, 3)
+tile_top = Vector2i(0, 3)
+tile_back = Vector2i(0, 3)
+tile_front = Vector2i(0, 3)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "flesh_block"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_1kpeg"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(1, 3)
+tile_right = Vector2i(1, 3)
+tile_bottom = Vector2i(1, 3)
+tile_top = Vector2i(1, 3)
+tile_back = Vector2i(1, 3)
+tile_front = Vector2i(1, 3)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "compost"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_feb1h"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(2, 3)
+tile_right = Vector2i(2, 3)
+tile_bottom = Vector2i(2, 3)
+tile_top = Vector2i(2, 3)
+tile_back = Vector2i(2, 3)
+tile_front = Vector2i(2, 3)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "cobble_stone"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_wbao1"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(0, 4)
+tile_right = Vector2i(0, 4)
+tile_bottom = Vector2i(4, 3)
+tile_top = Vector2i(4, 3)
+tile_back = Vector2i(0, 4)
+tile_front = Vector2i(1, 4)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "furnace_inactive_-z"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_460qd"]
+atlas_size_in_tiles = Vector2i(20, 10)
+mesh_ortho_rotation_index = 10
+tile_left = Vector2i(0, 4)
+tile_right = Vector2i(0, 4)
+tile_bottom = Vector2i(4, 3)
+tile_top = Vector2i(4, 3)
+tile_back = Vector2i(0, 4)
+tile_front = Vector2i(1, 4)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "furnace_inactive_+z"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_sd2k4"]
+atlas_size_in_tiles = Vector2i(20, 10)
+mesh_ortho_rotation_index = 16
+tile_left = Vector2i(0, 4)
+tile_right = Vector2i(0, 4)
+tile_bottom = Vector2i(4, 3)
+tile_top = Vector2i(4, 3)
+tile_back = Vector2i(0, 4)
+tile_front = Vector2i(1, 4)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "furnace_inactive_-x"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_heqti"]
+atlas_size_in_tiles = Vector2i(20, 10)
+mesh_ortho_rotation_index = 22
+tile_left = Vector2i(0, 4)
+tile_right = Vector2i(0, 4)
+tile_bottom = Vector2i(4, 3)
+tile_top = Vector2i(4, 3)
+tile_back = Vector2i(0, 4)
+tile_front = Vector2i(1, 4)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "furnace_inactive_+x"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_d8n1b"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(0, 4)
+tile_right = Vector2i(0, 4)
+tile_bottom = Vector2i(4, 3)
+tile_top = Vector2i(4, 3)
+tile_back = Vector2i(0, 4)
+tile_front = Vector2i(2, 4)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "furnace_active_-z"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_ltob1"]
+atlas_size_in_tiles = Vector2i(20, 10)
+mesh_ortho_rotation_index = 10
+tile_left = Vector2i(0, 4)
+tile_right = Vector2i(0, 4)
+tile_bottom = Vector2i(4, 3)
+tile_top = Vector2i(4, 3)
+tile_back = Vector2i(0, 4)
+tile_front = Vector2i(2, 4)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "furnace_active_+z"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_fwjog"]
+atlas_size_in_tiles = Vector2i(20, 10)
+mesh_ortho_rotation_index = 16
+tile_left = Vector2i(0, 4)
+tile_right = Vector2i(0, 4)
+tile_bottom = Vector2i(4, 3)
+tile_top = Vector2i(4, 3)
+tile_back = Vector2i(0, 4)
+tile_front = Vector2i(2, 4)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "furnace_active_-x"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_w3tmp"]
+atlas_size_in_tiles = Vector2i(20, 10)
+mesh_ortho_rotation_index = 22
+tile_left = Vector2i(0, 4)
+tile_right = Vector2i(0, 4)
+tile_bottom = Vector2i(4, 3)
+tile_top = Vector2i(4, 3)
+tile_back = Vector2i(0, 4)
+tile_front = Vector2i(2, 4)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "furnace_active_+x"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_2lxb2"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(3, 4)
+tile_right = Vector2i(3, 4)
+tile_bottom = Vector2i(3, 4)
+tile_top = Vector2i(3, 4)
+tile_back = Vector2i(3, 4)
+tile_front = Vector2i(3, 4)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "guts_red"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_nfq5m"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(4, 4)
+tile_right = Vector2i(4, 4)
+tile_bottom = Vector2i(4, 4)
+tile_top = Vector2i(4, 4)
+tile_back = Vector2i(4, 4)
+tile_front = Vector2i(4, 4)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "guts_orange"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_l8dd7"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(5, 4)
+tile_right = Vector2i(5, 4)
+tile_bottom = Vector2i(5, 4)
+tile_top = Vector2i(5, 4)
+tile_back = Vector2i(5, 4)
+tile_front = Vector2i(5, 4)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "magma_block"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_y0ax4"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(6, 4)
+tile_right = Vector2i(6, 4)
+tile_bottom = Vector2i(6, 4)
+tile_top = Vector2i(6, 4)
+tile_back = Vector2i(6, 4)
+tile_front = Vector2i(6, 4)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "bedrock"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_sbamb"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(7, 4)
+tile_right = Vector2i(7, 4)
+tile_bottom = Vector2i(7, 4)
+tile_top = Vector2i(7, 4)
+tile_back = Vector2i(7, 4)
+tile_front = Vector2i(7, 4)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "slime_block"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_3d645"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(8, 4)
+tile_right = Vector2i(8, 4)
+tile_bottom = Vector2i(8, 4)
+tile_top = Vector2i(8, 4)
+tile_back = Vector2i(8, 4)
+tile_front = Vector2i(8, 4)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "chocolate_block"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_q26ey"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(3, 5)
+tile_right = Vector2i(3, 5)
+tile_bottom = Vector2i(3, 5)
+tile_top = Vector2i(3, 5)
+tile_back = Vector2i(3, 5)
+tile_front = Vector2i(3, 5)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "sand"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_60ao8"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(4, 5)
+tile_right = Vector2i(4, 5)
+tile_bottom = Vector2i(4, 5)
+tile_top = Vector2i(4, 5)
+tile_back = Vector2i(4, 5)
+tile_front = Vector2i(4, 5)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "sand_brick"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_ku4qr"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(5, 5)
+tile_right = Vector2i(5, 5)
+tile_bottom = Vector2i(5, 5)
+tile_top = Vector2i(5, 5)
+tile_back = Vector2i(5, 5)
+tile_front = Vector2i(5, 5)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "coral"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_3r1ak"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(6, 5)
+tile_right = Vector2i(6, 5)
+tile_bottom = Vector2i(6, 5)
+tile_top = Vector2i(6, 5)
+tile_back = Vector2i(6, 5)
+tile_front = Vector2i(6, 5)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "mushroom_stem"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_puxjl"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(7, 5)
+tile_right = Vector2i(7, 5)
+tile_bottom = Vector2i(7, 5)
+tile_top = Vector2i(7, 5)
+tile_back = Vector2i(7, 5)
+tile_front = Vector2i(7, 5)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "mushroom_cap"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_44l0v"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(8, 5)
+tile_right = Vector2i(8, 5)
+tile_bottom = Vector2i(8, 5)
+tile_top = Vector2i(8, 5)
+tile_back = Vector2i(8, 5)
+tile_front = Vector2i(8, 5)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "poop"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_5wqc5"]
+mesh = ExtResource("3_xevws")
+collision_aabbs = Array[AABB]([AABB(0.2, 0, 0.2, 0.6, 0.8, 0.6)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "red_flower_3"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_5j6r0"]
+mesh = ExtResource("4_fs5lr")
+collision_aabbs = Array[AABB]([AABB(0.3, 0, 0.3, 0.4, 0.7, 0.4)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "red_flower_2"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_c8jeg"]
+mesh = ExtResource("5_rpy4a")
+collision_aabbs = Array[AABB]([AABB(0.35, 0, 0.35, 0.3, 0.4, 0.3)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "red_flower_1"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_d1nii"]
+mesh = ExtResource("6_ctvbi")
+collision_aabbs = Array[AABB]([AABB(0.4, 0, 0.4, 0.2, 0.4, 0.2)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "red_flower_0"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_4y8e7"]
+mesh = ExtResource("7_7itvp")
+collision_aabbs = Array[AABB]([AABB(0.2, 0, 0.2, 0.6, 1, 0.6)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "orange_flower_3"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_baftu"]
+mesh = ExtResource("4_fs5lr")
+collision_aabbs = Array[AABB]([AABB(0.3, 0, 0.3, 0.4, 0.6, 0.4)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "orange_flower_2"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_0ows1"]
+mesh = ExtResource("5_rpy4a")
+collision_aabbs = Array[AABB]([AABB(0.35, 0, 0.35, 0.3, 0.35, 0.3)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "orange_flower_1"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_gyqfe"]
+mesh = ExtResource("6_ctvbi")
+collision_aabbs = Array[AABB]([AABB(0.4, 0, 0.4, 0.2, 0.25, 0.2)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "orange_flower_0"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_26nf4"]
+mesh = ExtResource("8_lornc")
+collision_aabbs = Array[AABB]([AABB(0.2, 0, 0.2, 0.6, 1, 0.6)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "sapling_plains_3"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_u1jtf"]
+mesh = ExtResource("9_ukqov")
+collision_aabbs = Array[AABB]([AABB(0.3, 0, 0.3, 0.4, 0.6, 0.4)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "sapling_plains_2"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_q26ey"]
+mesh = ExtResource("10_ppydk")
+collision_aabbs = Array[AABB]([AABB(0.35, 0, 0.35, 0.3, 0.35, 0.3)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "sapling_plains_1"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_60ao8"]
+mesh = ExtResource("11_5s8uf")
+collision_aabbs = Array[AABB]([AABB(0.4, 0, 0.4, 0.2, 0.25, 0.2)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "sapling_plains_0"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_ku4qr"]
+mesh = ExtResource("12_a36rl")
+collision_aabbs = Array[AABB]([AABB(0.2, 0, 0.2, 0.6, 1, 0.6)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "sapling_tundra_3"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_3r1ak"]
+mesh = ExtResource("13_khcat")
+collision_aabbs = Array[AABB]([AABB(0.3, 0, 0.3, 0.4, 0.6, 0.4)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "sapling_tundra_2"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_puxjl"]
+mesh = ExtResource("14_twekg")
+collision_aabbs = Array[AABB]([AABB(0.35, 0, 0.35, 0.3, 0.5, 0.3)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "sapling_tundra_1"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_44l0v"]
+mesh = ExtResource("15_o8tvr")
+collision_aabbs = Array[AABB]([AABB(0.4, 0, 0.4, 0.2, 0.25, 0.2)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "sapling_tundra_0"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_4hlht"]
+mesh = ExtResource("16_hgn67")
+collision_aabbs = Array[AABB]([AABB(0.2, 0, 0.2, 0.6, 1, 0.6)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "red_mushroom_3"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_0rqgy"]
+mesh = ExtResource("17_mvwv7")
+collision_aabbs = Array[AABB]([AABB(0.3, 0, 0.3, 0.4, 0.6, 0.4)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "red_mushroom_2"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_onki2"]
+mesh = ExtResource("18_l3gpk")
+collision_aabbs = Array[AABB]([AABB(0.35, 0, 0.35, 0.3, 0.5, 0.3)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "red_mushroom_1"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_ehcde"]
+mesh = ExtResource("19_2tcq6")
+collision_aabbs = Array[AABB]([AABB(0.4, 0, 0.4, 0.2, 0.25, 0.2)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "red_mushroom_0"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_1sm4j"]
+mesh = ExtResource("20_fi2qe")
+collision_aabbs = Array[AABB]([AABB(0.2, 0, 0.2, 0.6, 1, 0.6)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "orange_chocolate_3"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_bsleg"]
+mesh = ExtResource("21_cdwfc")
+collision_aabbs = Array[AABB]([AABB(0.3, 0, 0.3, 0.4, 0.6, 0.4)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "orange_chocolate_2"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_72xxx"]
+mesh = ExtResource("22_5htor")
+collision_aabbs = Array[AABB]([AABB(0.35, 0, 0.35, 0.3, 0.4, 0.3)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "orange_chocolate_1"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_2kgge"]
+mesh = ExtResource("23_u8yhl")
+collision_aabbs = Array[AABB]([AABB(0.4, 0, 0.4, 0.2, 0.25, 0.2)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "orange_chocolate_0"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_eq20p"]
+mesh = ExtResource("24_pfgqo")
+collision_aabbs = Array[AABB]([AABB(0.2, 0, 0.2, 0.6, 1, 0.6)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "red_chocolate_3"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_hqx80"]
+mesh = ExtResource("25_3ls2s")
+collision_aabbs = Array[AABB]([AABB(0.3, 0, 0.3, 0.4, 0.8, 0.4)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "red_chocolate_2"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_fujy7"]
+mesh = ExtResource("26_hjrhc")
+collision_aabbs = Array[AABB]([AABB(0.35, 0, 0.35, 0.3, 0.4, 0.3)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "red_chocolate_1"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_tjldy"]
+mesh = ExtResource("27_wbayu")
+collision_aabbs = Array[AABB]([AABB(0.4, 0, 0.4, 0.2, 0.25, 0.2)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "red_chocolate_0"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_sbamb"]
+mesh = ExtResource("28_esilv")
+collision_aabbs = Array[AABB]([AABB(0.1, 0, 0.1, 0.8, 0.6, 0.8)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "grass_tundra_3"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_3d645"]
+mesh = ExtResource("29_tsg1h")
+collision_aabbs = Array[AABB]([AABB(0.25, 0, 0.25, 0.5, 0.5, 0.5)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "grass_tundra_2"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_ia4m4"]
+mesh = ExtResource("30_10q7h")
+collision_aabbs = Array[AABB]([AABB(0.3, 0, 0.3, 0.4, 0.3, 0.4)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "grass_tundra_1"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_hddul"]
+mesh = ExtResource("31_kqsot")
+collision_aabbs = Array[AABB]([AABB(0.4, 0, 0.4, 0.2, 0.2, 0.2)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "grass_tundra_0"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_oo75i"]
+mesh = ExtResource("32_2mjh1")
+collision_aabbs = Array[AABB]([AABB(0.1, 0, 0.1, 0.8, 0.65, 0.8)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "grass_plains_3"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_bbmwt"]
+mesh = ExtResource("33_mx1db")
+collision_aabbs = Array[AABB]([AABB(0.2, 0, 0.2, 0.6, 0.5, 0.6)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "grass_plains_2"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_41v8h"]
+mesh = ExtResource("34_x3rxm")
+collision_aabbs = Array[AABB]([AABB(0.3, 0, 0.3, 0.4, 0.4, 0.4)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "grass_plains_1"
+
+[sub_resource type="VoxelBlockyModelMesh" id="VoxelBlockyModelMesh_e1ukl"]
+mesh = ExtResource("35_koql4")
+collision_aabbs = Array[AABB]([AABB(0.4, 0, 0.4, 0.2, 0.2, 0.2)])
+collision_mask = 16
+material_override_0 = ExtResource("2_xai7l")
+collision_enabled_0 = true
+resource_name = "grass_plains_0"
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_l05n7"]
+atlas_size_in_tiles = Vector2i(20, 10)
+tile_left = Vector2i(2, 1)
+tile_right = Vector2i(2, 1)
+tile_bottom = Vector2i(2, 1)
+tile_top = Vector2i(2, 1)
+tile_back = Vector2i(2, 1)
+tile_front = Vector2i(2, 1)
+collision_mask = 17
+material_override_0 = ExtResource("1_6g035")
+resource_name = "dirt"
+
+[resource]
+models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_f568l"), SubResource("VoxelBlockyModelCube_1qs81"), SubResource("VoxelBlockyModelCube_j4i36"), SubResource("VoxelBlockyModelCube_8jnep"), SubResource("VoxelBlockyModelCube_mh33j"), SubResource("VoxelBlockyModelCube_qqv56"), SubResource("VoxelBlockyModelCube_wfd4g"), SubResource("VoxelBlockyModelCube_774qq"), SubResource("VoxelBlockyModelCube_qafuy"), SubResource("VoxelBlockyModelCube_3e8yp"), SubResource("VoxelBlockyModelCube_5j308"), SubResource("VoxelBlockyModelCube_km2wl"), SubResource("VoxelBlockyModelCube_5wqc5"), SubResource("VoxelBlockyModelCube_5j6r0"), SubResource("VoxelBlockyModelCube_c8jeg"), SubResource("VoxelBlockyModelCube_d1nii"), SubResource("VoxelBlockyModelCube_4y8e7"), SubResource("VoxelBlockyModelCube_baftu"), SubResource("VoxelBlockyModelCube_0ows1"), SubResource("VoxelBlockyModelCube_gyqfe"), SubResource("VoxelBlockyModelCube_ajit0"), SubResource("VoxelBlockyModelCube_2rjai"), SubResource("VoxelBlockyModelCube_f568l"), SubResource("VoxelBlockyModelCube_26nf4"), SubResource("VoxelBlockyModelCube_u1jtf"), SubResource("VoxelBlockyModelCube_71mq6"), SubResource("VoxelBlockyModelCube_tyjrx"), SubResource("VoxelBlockyModelCube_mwhws"), SubResource("VoxelBlockyModelCube_1kpeg"), SubResource("VoxelBlockyModelCube_feb1h"), SubResource("VoxelBlockyModelCube_wbao1"), SubResource("VoxelBlockyModelCube_460qd"), SubResource("VoxelBlockyModelCube_sd2k4"), SubResource("VoxelBlockyModelCube_heqti"), SubResource("VoxelBlockyModelCube_d8n1b"), SubResource("VoxelBlockyModelCube_ltob1"), SubResource("VoxelBlockyModelCube_fwjog"), SubResource("VoxelBlockyModelCube_w3tmp"), SubResource("VoxelBlockyModelCube_2lxb2"), SubResource("VoxelBlockyModelCube_nfq5m"), SubResource("VoxelBlockyModelCube_l8dd7"), SubResource("VoxelBlockyModelCube_y0ax4"), SubResource("VoxelBlockyModelCube_sbamb"), SubResource("VoxelBlockyModelCube_3d645"), SubResource("VoxelBlockyModelCube_q26ey"), SubResource("VoxelBlockyModelCube_60ao8"), SubResource("VoxelBlockyModelCube_ku4qr"), SubResource("VoxelBlockyModelCube_3r1ak"), SubResource("VoxelBlockyModelCube_puxjl"), SubResource("VoxelBlockyModelCube_44l0v"), SubResource("VoxelBlockyModelMesh_5wqc5"), SubResource("VoxelBlockyModelMesh_5j6r0"), SubResource("VoxelBlockyModelMesh_c8jeg"), SubResource("VoxelBlockyModelMesh_d1nii"), SubResource("VoxelBlockyModelMesh_4y8e7"), SubResource("VoxelBlockyModelMesh_baftu"), SubResource("VoxelBlockyModelMesh_0ows1"), SubResource("VoxelBlockyModelMesh_gyqfe"), SubResource("VoxelBlockyModelMesh_26nf4"), SubResource("VoxelBlockyModelMesh_u1jtf"), SubResource("VoxelBlockyModelMesh_q26ey"), SubResource("VoxelBlockyModelMesh_60ao8"), SubResource("VoxelBlockyModelMesh_ku4qr"), SubResource("VoxelBlockyModelMesh_3r1ak"), SubResource("VoxelBlockyModelMesh_puxjl"), SubResource("VoxelBlockyModelMesh_44l0v"), SubResource("VoxelBlockyModelMesh_4hlht"), SubResource("VoxelBlockyModelMesh_0rqgy"), SubResource("VoxelBlockyModelMesh_onki2"), SubResource("VoxelBlockyModelMesh_ehcde"), SubResource("VoxelBlockyModelMesh_1sm4j"), SubResource("VoxelBlockyModelMesh_bsleg"), SubResource("VoxelBlockyModelMesh_72xxx"), SubResource("VoxelBlockyModelMesh_2kgge"), SubResource("VoxelBlockyModelMesh_eq20p"), SubResource("VoxelBlockyModelMesh_hqx80"), SubResource("VoxelBlockyModelMesh_fujy7"), SubResource("VoxelBlockyModelMesh_tjldy"), SubResource("VoxelBlockyModelMesh_sbamb"), SubResource("VoxelBlockyModelMesh_3d645"), SubResource("VoxelBlockyModelMesh_ia4m4"), SubResource("VoxelBlockyModelMesh_hddul"), SubResource("VoxelBlockyModelMesh_oo75i"), SubResource("VoxelBlockyModelMesh_bbmwt"), SubResource("VoxelBlockyModelMesh_41v8h"), SubResource("VoxelBlockyModelMesh_e1ukl"), SubResource("VoxelBlockyModelCube_l05n7")])

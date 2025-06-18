@@ -1,11 +1,7 @@
-[gd_resource type="Resource" script_class="BlockItem" load_steps=5 format=3 uid="uid://0yd8k0lqqqr3"]
+[gd_resource type="Resource" script_class="BlockItem" load_steps=4 format=3 uid="uid://0yd8k0lqqqr3"]
 
 [ext_resource type="Texture2D" uid="uid://fa8mwqddxkvq" path="res://assets/new/items.png" id="1_8ovai"]
 [ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/item/block_item.gd" id="1_gmy8k"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2sn1v"]
-atlas = ExtResource("1_8ovai")
-region = Rect2(96, 336, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cauwb"]
 atlas = ExtResource("1_8ovai")
@@ -16,6 +12,6 @@ script = ExtResource("1_gmy8k")
 block_name = &"mushroom_stem"
 name = "Mushroom Stem"
 single_texture = SubResource("AtlasTexture_cauwb")
-multi_texture = SubResource("AtlasTexture_2sn1v")
 stack_size = 999
+category = &"Natural"
 metadata/_custom_type_script = "uid://crsy4y4oa5e1m"

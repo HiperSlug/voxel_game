@@ -14,7 +14,7 @@ offset_right = 29.0
 offset_bottom = 29.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_type_variation = &"InventorySlot"
+theme_type_variation = &"PumpkinContainer"
 script = ExtResource("1_2vm0m")
 
 [node name="TextureRect" type="TextureRect" parent="."]

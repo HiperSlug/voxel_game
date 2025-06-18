@@ -1,13 +1,9 @@
-[gd_resource type="Resource" script_class="BlockItem" load_steps=5 format=3 uid="uid://kb1ndm8hmlrf"]
+[gd_resource type="Resource" script_class="BlockItem" load_steps=4 format=3 uid="uid://dguapln7lbqlh"]
 
 [ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/item/block_item.gd" id="1_m81tv"]
-[ext_resource type="Texture2D" uid="uid://va4atfhced42" path="res://assets/new/item_sprites.png" id="1_p3cib"]
+[ext_resource type="Texture2D" uid="uid://diq5idbt0amwf" path="res://assets/In-Hand_Sprites.png" id="1_p3cib"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p3cib"]
-atlas = ExtResource("1_p3cib")
-region = Rect2(48, 336, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ck1vq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7218"]
 atlas = ExtResource("1_p3cib")
 region = Rect2(0, 336, 48, 48)
 
@@ -15,7 +11,7 @@ region = Rect2(0, 336, 48, 48)
 script = ExtResource("1_m81tv")
 block_name = &"furnace"
 name = "Furnace"
-single_texture = SubResource("AtlasTexture_ck1vq")
-multi_texture = SubResource("AtlasTexture_p3cib")
+single_texture = SubResource("AtlasTexture_b7218")
 stack_size = 999
+category = &"Decoration"
 metadata/_custom_type_script = "uid://crsy4y4oa5e1m"

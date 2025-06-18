@@ -1,10 +1,33 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dq7bwsqfbymet"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dq7bwsqfbymet"]
 
 [ext_resource type="StyleBox" uid="uid://dnrdg4xu6p125" path="res://theme/inventory_slot/inventory_slot.tres" id="1_8ab6e"]
+[ext_resource type="Texture2D" uid="uid://sx7gh2qouv2j" path="res://assets/new/inventory_slot_pumpkin.png" id="2_4yjuo"]
+[ext_resource type="Texture2D" uid="uid://ddroqmks3y5m" path="res://assets/new/inventory_slot_melon.png" id="2_gco77"]
 [ext_resource type="StyleBox" uid="uid://dirgfcypve8f2" path="res://theme/inventory_slot/inventory_slot_selected.tres" id="2_nrt0f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6l1ye"]
+texture = ExtResource("2_gco77")
+texture_margin_left = 5.0
+texture_margin_top = 6.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+axis_stretch_horizontal = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gco77"]
+texture = ExtResource("2_4yjuo")
+texture_margin_left = 5.0
+texture_margin_top = 6.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+axis_stretch_horizontal = 2
+region_rect = Rect2(0, 0, 33, 33)
 
 [resource]
 InventorySlot/base_type = &"PanelContainer"
 InventorySlot/styles/panel = ExtResource("1_8ab6e")
+MelonContainer/base_type = &"PanelContainer"
+MelonContainer/styles/panel = SubResource("StyleBoxTexture_6l1ye")
+PumpkinContainer/base_type = &"PanelContainer"
+PumpkinContainer/styles/panel = SubResource("StyleBoxTexture_gco77")
 SelInventorySlot/base_type = &"PanelContainer"
 SelInventorySlot/styles/panel = ExtResource("2_nrt0f")

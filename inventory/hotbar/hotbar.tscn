@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ku16lkcnv2bk" path="res://inventory/hotbar/inventory_slot_gui.tscn" id="1_aba1q"]
 
-[node name="Hotbar" type="HBoxContainer"]
+[node name="Hotbar" type="HBoxContainer" groups=["hotbar"]]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

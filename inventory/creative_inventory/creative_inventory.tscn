@@ -3,32 +3,31 @@
 [ext_resource type="Script" uid="uid://dch044bp25ieg" path="res://inventory/creative_inventory/creative_inventory.gd" id="1_c6e3f"]
 [ext_resource type="Resource" uid="uid://ypnoxoqxk3nj" path="res://data/group_item.tres" id="2_48fod"]
 
-[node name="CreativeInventory" type="Control"]
+[node name="CreativeInventory" type="Control" node_paths=PackedStringArray("section_container")]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_c6e3f")
 item_group = ExtResource("2_48fod")
+section_container = NodePath("PanelContainer/ScrollContainer/VBoxContainer")
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -28.0
-offset_top = -10.0
-offset_right = 28.0
-offset_bottom = 10.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/h_separation = 0
-theme_override_constants/v_separation = 0
-columns = 8
+theme_type_variation = &"PumpkinContainer"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

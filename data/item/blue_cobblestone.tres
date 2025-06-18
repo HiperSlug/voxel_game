@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BlockItem" load_steps=4 format=3 uid="uid://bkferk26fhc36"]
+
+[ext_resource type="Texture2D" uid="uid://fa8mwqddxkvq" path="res://assets/new/items.png" id="1_wbvwo"]
+[ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/item/block_item.gd" id="2_ilcug"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjrwb"]
+atlas = ExtResource("1_wbvwo")
+region = Rect2(96, 48, 48, 48)
+
+[resource]
+script = ExtResource("2_ilcug")
+block_name = &"blue_cobblestone"
+name = "Blue Stone"
+single_texture = SubResource("AtlasTexture_sjrwb")
+stack_size = 999
+category = &"Rock"
+metadata/_custom_type_script = "uid://crsy4y4oa5e1m"

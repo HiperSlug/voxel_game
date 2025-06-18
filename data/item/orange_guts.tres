@@ -1,11 +1,7 @@
-[gd_resource type="Resource" script_class="BlockItem" load_steps=5 format=3 uid="uid://djcvdmwcmp8fk"]
+[gd_resource type="Resource" script_class="BlockItem" load_steps=4 format=3 uid="uid://djcvdmwcmp8fk"]
 
 [ext_resource type="Texture2D" uid="uid://fa8mwqddxkvq" path="res://assets/new/items.png" id="1_1l0i3"]
 [ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/item/block_item.gd" id="2_0q8lr"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t2cq4"]
-atlas = ExtResource("1_1l0i3")
-region = Rect2(144, 240, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l4x1q"]
 atlas = ExtResource("1_1l0i3")
@@ -16,6 +12,6 @@ script = ExtResource("2_0q8lr")
 block_name = &"orange_guts"
 name = "Orange Guts"
 single_texture = SubResource("AtlasTexture_l4x1q")
-multi_texture = SubResource("AtlasTexture_t2cq4")
 stack_size = 999
+category = &"Misc"
 metadata/_custom_type_script = "uid://crsy4y4oa5e1m"

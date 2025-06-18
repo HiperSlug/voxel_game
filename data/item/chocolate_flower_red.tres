@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="BlockItem" load_steps=4 format=3 uid="uid://dmvvv3f5o4a65"]
+
+[ext_resource type="Texture2D" uid="uid://diq5idbt0amwf" path="res://assets/In-Hand_Sprites.png" id="1_82rxw"]
+[ext_resource type="Script" uid="uid://crsy4y4oa5e1m" path="res://data/item/block_item.gd" id="2_yhvoa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ijc2"]
+atlas = ExtResource("1_82rxw")
+region = Rect2(96, 96, 48, 48)
+
+[resource]
+script = ExtResource("2_yhvoa")
+block_name = &"red_chocolate"
+name = "Chocolate Flower Red"
+single_texture = SubResource("AtlasTexture_2ijc2")
+stack_size = 999
+category = &"Foliage"
+metadata/_custom_type_script = "uid://crsy4y4oa5e1m"

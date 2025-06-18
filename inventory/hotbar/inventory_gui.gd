@@ -1,26 +1,12 @@
 extends Control
 class_name InventoryGUI
 
-@export var inventory: Inventory
 @export var hotbar: HBoxContainer
 var selected_hotbar_slot: int = 0
 
 func _ready() -> void:
-	connect_inventory_slots(inventory.inventory_slots)
 	select_slot(selected_hotbar_slot)
 	close_creative_inventory()
-
-func connect_inventory_slots(inventory_slots: Array[ItemSlot]) -> void:
-	
-	for i: int in range(inventory_slots.size()):
-		
-		# hotbar
-		if i < hotbar.get_child_count():
-			
-			var item_slot: ItemSlot = inventory_slots[i]
-			var inv_slot_gui: InventorySlotGUI = hotbar.get_child(i)
-			inv_slot_gui.set_item_slot(item_slot)
-
 
 func next_slot() -> void:
 	select_slot(selected_hotbar_slot + 1)
@@ -43,6 +29,8 @@ func select_slot(new_index: int) -> void:
 
 @onready var creative_inventory: CreativeInventory = $CreativeInventory
 
+func get_selected_slot() -> InventorySlotGUI:
+	return hotbar.get_child(selected_hotbar_slot)
 
 func open_creative_inventory() -> void:
 	creative_inventory.show()
